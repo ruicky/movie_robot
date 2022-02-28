@@ -31,6 +31,8 @@ class PTAtmos(NexusProgramSite):
         :return:
         """
         soup = BeautifulSoup(text, features="lxml")
+        if not soup.find('table', class_="torrents"):
+            return []
         search_result = []
         for row in soup.find('table', class_="torrents").findAll('tr', recursive=False)[1:]:
             t = Torrent()
@@ -67,8 +69,10 @@ class PTAtmos(NexusProgramSite):
                         t.free_deadline = datetime.datetime.strptime(deadline['title'], '%Y-%m-%d %H:%M:%S')
                     else:
                         t.free_deadline = datetime.datetime.max
-                    subject = info.select_one('br').next_sibling
-                    t.subject = subject.string if subject else ''
+                    subject = ''
+                    if info.select_one('br'):
+                        subject = info.select_one('br').next_sibling
+                    t.subject = subject
                     t.url = self.get_site() + '/download.php?id=' + t.id
                 elif i == 3:
                     t.publish_time = datetime.datetime.strptime(item.select_one('span[title]')['title'], '%Y-%m-%d %H:%M:%S')
