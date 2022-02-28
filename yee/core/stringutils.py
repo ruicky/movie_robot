@@ -68,3 +68,13 @@ class StringUtils:
             text = text.replace('${%s}' % var_name,
                                 str(context[var_name]) if var_name in context else '')
         return text
+    @staticmethod
+    def split(text, delimiter = '||'):
+        if text is None or len(text) == 0:
+            return []
+        return text.split(delimiter)
+    @staticmethod
+    def join(arr, delimiter = '||'):
+        if arr is None or len(arr) == 0:
+            return None
+        return delimiter.join(arr).strip()

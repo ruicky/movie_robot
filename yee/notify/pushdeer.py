@@ -8,6 +8,8 @@ from yee.notify.notify import Notify
 """
 Pushdeer通知
 """
+
+
 class PushdeerNotify(Notify):
     req = RequestUtils(request_interval_mode=False)
 
@@ -21,7 +23,7 @@ class PushdeerNotify(Notify):
         pushkey = []
         if 'pushkey' in self.args.keys():
             pushkey.append(self.args['pushkey'])
-        users = self.args['users']
+        users = self.args.get('users')
         if users is not None and len(users) > 0:
             for user in users:
                 user.setdefault('nickname', None)
@@ -32,7 +34,6 @@ class PushdeerNotify(Notify):
             return ','.join(list(dict.fromkeys(pushkey))).strip()
         else:
             return None
-
 
     def send(self, message_template: str, context: dict):
         if message_template not in self.message_template:

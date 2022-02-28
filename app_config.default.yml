@@ -51,6 +51,20 @@ pt:
   keepfrds:
     type: 'cookie'
     cookie: ''
+  btschool:
+    type: 'cookie'
+    cookie: ''
+  putao:
+    type: 'cookie'
+    cookie: ''
+  pterclub:
+    type: 'cookie'
+    cookie: ''
+  jackett:
+    # 自己搭建的 jackett 访问地址
+    address: 'http://192.168.1.10:9117'
+    # jackett 管理后台顶部获取api_key
+    api_key: '111'
 sources:
   #目前仅支持douban_wish，这里不需要改动
   - type: 'douban_wish'
@@ -75,7 +89,7 @@ tasks:
       source: 'douban_wish'
       #设置搜索的pt站，支持多pt同时搜索。多个用英文;隔开
       search_pt: 'mteam;hdsky'
-      #选择最佳种子的规则配置，compact 紧凑型硬盘规则，选择方面会注重高压缩比的小尺寸资源；compress 全压缩格式，但这个会选到原盘无损压缩；collection 收藏级规则，会重点选择remux和蓝光原盘；默认使用全压缩文件选种策略，避开原盘资源
+      #关于策略的详细讲解：https://feather-purple-bdd.notion.site/12f6d44243194c8c96a7e000b9dde023
       score_rule: 'compress'
       #某资源首个种子过去多久，才进行检索下载；有些资源刚出来质量并不好，等几个小时，发种人变多，才有的选；
       debut_passed_hours: 6
@@ -99,3 +113,6 @@ tasks:
       #开启全量种子监测，适用于不想通过机器人下载电影，而是手动提交下载，但还想要使用机器人的智能整理及通知功能的用户，默认false为不开启；
       #开启这个选项为true时，必须配置好movies_config.yml中manager download_paths，否则机器人识别不到资源是什么，会整理和通知出错
       monitor_all_torrents: false
+      #默认为true开启。下载完成后，自动刷新影音库扫描，暂时仅支持Emby；
+      #如果是一部新剧下载完，会自动查找该剧所在媒体库，扫描媒体库；如果是一部要更新的剧下完，会自动找到该剧，只重新扫描该剧，电影则刷新电影所在媒体库，智能最优局部刷新；
+      refresh_media_server: true

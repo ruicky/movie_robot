@@ -4,6 +4,8 @@ import logging
 import os
 import re
 import zipfile
+import datetime
+from random import randrange
 from abc import ABCMeta, abstractmethod
 from urllib.parse import urlparse
 
@@ -146,3 +148,52 @@ class NexusProgramSite(PTSite, metaclass=ABCMeta):
             with open(ft.filepath, 'wb') as f:
                 f.write(r.content)
         return ft
+
+    def test_empty_search(self):
+        print('[空搜索] 测试中...')
+        some_random_string = 'vFFKLnuojfdn3214v' + str(randrange(10000))
+        try:
+            self.search_torrent(keyword = some_random_string)
+        except Exception as e:
+            print('[空搜索] 测试未通过: 请适配搜索结果为空的情况!')
+            raise e
+        print('[空搜索] 测试通过!')
+
+    def test_free(self):
+        print('[免费种] 测试中..')
+        url = self.get_site() + '/torrents.php?spstate=2'
+        t_list = self.get_torrent_list(url = url, result_page_limit = 1)
+        if not len(t_list):
+            raise Exception('[免费种] 测试未通过：免费种检索失败, 请尝试访问' + url)
+        for t in t_list:
+            if t.free_deadline < datetime.datetime.now():
+                print(t.to_json())
+                raise Exception('[免费种] 测试未通过：未正确识别免费种子!')
+        print('[免费种] 测试通过!')
+
+    def test_redseed(self):
+        print('[红种] 测试中..')
+        url = self.get_site() + '/torrents.php?incldead=2'
+        t_list = self.get_torrent_list(url = url, result_page_limit = 1)
+        if not len(t_list):
+            raise Exception('[红种] 测试未通过：红种检索失败, 请尝试访问' + url)
+        for t in t_list:
+            if not t.red_seed:
+                print(t.to_json())
+                raise Exception('[红种] 测试未通过：未正确识别红种!')
+        print('[红种] 测试通过!')
+
+    def test_regular(self, pages = 5):
+        print('[多页面] 测试中..')
+        url = self.get_site() + '/torrents.php'
+        t_list = self.get_torrent_list(url = url, result_page_limit = pages)
+        if not len(t_list):
+            raise Exception('[多页面] 测试未通过：种子检索失败, 请尝试访问' + url)
+        print('[多页面] 测试通过, 检索了 ' + str(len(t_list)) + ' 个种子未发现问题!')
+
+    def test(self):
+        self.test_empty_search()
+        self.test_free()
+        self.test_redseed()
+        self.test_regular()
+

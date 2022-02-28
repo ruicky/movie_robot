@@ -9,6 +9,8 @@ from yee.notify.notify import Notify
 """
 企业微信通知
 """
+
+
 class QywechatNotify(Notify):
     req = RequestUtils(request_interval_mode=False)
 
@@ -33,6 +35,18 @@ class QywechatNotify(Notify):
         else:
             return None
 
+    def get_touser(self, context: dict):
+        context.setdefault('nickname', None)
+        touser = '@all'
+        if 'touser' in self.args.keys():
+            touser = self.args['touser']
+        users = self.args.get('users')
+        if users is not None and len(users) > 0:
+            for user in users:
+                if user.get('touser') is not None and user.get('nickname') == context['nickname']:
+                    touser = user.get('touser')
+        return touser
+
     def send(self, message_template: str, context: dict):
         access_token = self.get_access_token()
         if access_token is None:
@@ -46,7 +60,7 @@ class QywechatNotify(Notify):
         message_pattern = mt['message']
         url = 'https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=' + access_token
         res = self.req.post_res(url, params=json.dumps({
-            'touser': self.args['touser'],
+            'touser': self.get_touser(context),
             'agentid': self.args['agentid'],
             'msgtype': 'news',
             'news': {

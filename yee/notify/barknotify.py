@@ -22,9 +22,22 @@ class BarkNotify(Notify):
         self.message_template = args['message_template']
         self.args = args
 
+    def get_push_url(self, context: dict):
+        context.setdefault('nickname', None)
+        push_url = []
+        if 'push_url' in self.args.keys():
+            push_url = push_url + self.args['push_url']
+        users = self.args.get('users')
+        if users is not None and len(users) > 0:
+            for user in users:
+                if user.get('push_url') is not None and user.get('nickname') == context['nickname']:
+                    push_url.append(user.get('push_url'))
+        return push_url
+
     def send(self, message_template: str, context: dict):
-        urls = self.push_url
+        urls = self.get_push_url(context)
         if urls is None or len(urls) == 0:
+            logging.error('没有任何push_url配置项')
             return
         if message_template not in self.message_template:
             logging.error('找不到通知消息模版：%s' % (message_template))

@@ -1,4 +1,3 @@
-import json
 import logging
 
 from yee.core.httputils import RequestUtils
@@ -24,7 +23,7 @@ class WxpusherNotify(Notify):
         uids = []
         if 'uid' in self.args.keys():
             uids.append(self.args['uid'])
-        users = self.args['users']
+        users = self.args.get('users')
         if users is not None and len(users) > 0:
             for user in users:
                 user.setdefault('nickname', None)

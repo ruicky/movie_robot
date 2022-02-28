@@ -1,16 +1,23 @@
-# This is a sample Python script.
-
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+# 爬取测试: 引入待测试的pt parser
+from yee.pt.ptpter import PTPTer
+def test():
+    # 初始化 client
+    client = PTPTer(
+        cookie = ""
+    )
+    # 测试空搜索
+    client.test_empty_search()
+    # 测试免费种
+    client.test_free()
+    # 测试红种
+    client.test_redseed()
+    # 多页面测试, 注意检查log中种子数量是否正确，防止漏爬情况
+    client.test_regular()
 
 
-# Press the green button in the gutter to run the script.
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    test();
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/

@@ -36,6 +36,9 @@ class PTPTer(NexusProgramSite):
         #     r'''<td class="rowfollow.*?img.*?title="(.*?)"''',
         #     text)):
         #     search_result.append(t)
+        if not soup.find('table', class_="torrents"):
+            return []
+
         for row in soup.find('table', class_="torrents").findAll('tr', recursive=False)[1:]:
             t = Torrent()
             t.site_name = self.get_site_name()
@@ -73,12 +76,16 @@ class PTPTer(NexusProgramSite):
                         else:
                             t.free_deadline = datetime.datetime.max
                     subject = info.select_one('div div[style="margin-top: 4px;"] span')
-                    t.subject = subject.string if subject else ''
+                    t.subject = str(subject.string) if subject else ''
                     t.url = self.get_site() + '/download.php?id=' + t.id
                 elif i == 3:
                     t.publish_time = datetime.datetime.strptime(item.select_one('span[title]')['title'], '%Y-%m-%d %H:%M:%S')
                 elif i == 4:
-                    t.file_size = PTSiteParser.trans_unit_to_mb(float(item.contents[0]), item.contents[2])
+                    raw_re = re.findall('(.*)(TB|GB|MB|KB)', item.text)
+                    if raw_re and raw_re[0] and raw_re[0][0] and raw_re[0][1]:
+                        t.file_size = PTSiteParser.trans_unit_to_mb(float(raw_re[0][0]), raw_re[0][1])
+                    else:
+                        t.file_size = 0
                 elif i == 5:
                     red = item.select_one('span[class="red"]') or item.select_one('font[color]')
                     if red:

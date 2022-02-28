@@ -20,3 +20,33 @@ manager:
 tmdb:
   #获取TMDB apikey的页面，https://www.themoviedb.org/settings/api 页面中的API 密钥
   api_key: '复制到这里'
+fanart:
+  #fanart是改善细节体验的配置，可配可不配。去这个网址申请apikey：https://fanart.tv/get-an-api-key/
+  api_key: ''
+douban:
+  #豆瓣用户配置信息
+  users:
+    #豆瓣的id，就是之前的user_domain；多个，就复制多个- 开头的配置
+    - id: ''
+      #这里可以自定义一个豆瓣的昵称，在通知时会使用这个。比如 老公、老婆、张三李四随便定义
+      nickname: ''
+      #豆瓣cookie，建议都配置，使用cookie后豆瓣的反爬就没那么严格了
+      cookie: ''
+      #自动标记维护，主要是维护豆瓣那个想看、在看、看过的信息，默认关闭
+      #true为开启，开启后，凡事下载完成的电影会自动打一个 下载完成 的标签，只要有这个标签，机器人之后就绝对不会再处理了；如果是电视剧下完，会移动到豆瓣在看
+      auto_tagging: false
+      #策略名，可以针多豆瓣id设置不同策略
+      score_rule: 'compress'
+  #豆瓣标签配置，在点想看的时候，如果加了标签，就可以通过这部分配置，告诉机器人这个标签的背后可以选用什么下载策略
+  tags_config:
+    #标签的名称，在豆瓣点想看时打上的标签
+    - tag_name: '原盘珍藏'
+      #当标签名称匹配这条规则时，选用的选种策略
+      score_rule: 'collection'
+    - tag_name: '随便看看'
+      score_rule: 'compact'
+    - tag_name: '追剧'
+      #当标签名称匹配这条规则时，优先选择的关键字，这个关键字可以是字幕组，也可以是pt站的名字，凡命中，都会有优先权，当资源品质差不多的时候，这个优先级就会起决定性作用了
+      name_keyword:
+        - 'tjupt'
+      score_rule: 'compress'
