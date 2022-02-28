@@ -2,8 +2,6 @@
 
 # 爬取测试: 引入待测试的pt parser
 from yee.pt.ptpter import PTPTer
-
-
 def test():
     # 初始化 client
     client = PTPTer(
