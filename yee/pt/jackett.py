@@ -1,20 +1,44 @@
+import cgi
 import datetime
 import io
 import logging
 import os
-import zipfile
+import re
 import time
-import cgi
-
-from abc import ABCMeta
-from urllib.parse import urlparse, unquote
+import zipfile
+from urllib.parse import unquote
 
 from yee.core.httputils import RequestUtils
-from yee.core.stringutils import StringUtils
 from yee.core.torrentmodels import Torrents, FileTorrent, Torrent, TorrentType
+from yee.pt.ptsite import PTSite
 
 
-class Jackett(metaclass=ABCMeta):
+class Jackett(PTSite):
+    def split(text, delimiter='/'):
+        if text is None or len(text) == 0:
+            return []
+        return text.split(delimiter)
+
+    def login(self):
+        try:
+            res = self.req.get(
+                url='%s/api/v2.0/indexers?apikey=%s&configured=true&_=%s' % (
+                    self.get_site(), self.kwargs['api_key'], int(time.time())),
+                headers=self.headers,
+                skip_check=True
+            ).json()
+            if len(res) > 0:
+                sites = []
+                for item in res:
+                    sites.append(item['name'])
+                logging.info('jackett: %s连接成功，已配置 %d 个站点：[%s]' % (self.get_site(), len(sites),'；'.join(sites)))
+        except Exception as e:
+                logging.error('jackett: %s连接失败，请检查 地址 和 api_key' % self.get_site())
+
+
+    def login_by_cookie(self, cookie: str):
+        pass
+
     headers = {
         'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36'
     }
@@ -24,6 +48,9 @@ class Jackett(metaclass=ABCMeta):
         self.kwargs = kwargs
         if kwargs['address'] is None or kwargs['api_key'] is None:
             raise RuntimeError('必须指定jackett的服务地址和api_key，缺一不可')
+        else:
+            self.login()
+
     def get_site(self):
         """
         返回pt站的网址
@@ -44,7 +71,7 @@ class Jackett(metaclass=ABCMeta):
     def search_torrent(self, keyword, result_page_limit=5, use_imdb_search: bool = False) -> Torrents:
         return self.automatic_page_loading(
             '%s/api/v2.0/indexers/all/results?apikey=%s&Query=%s&_=%s' % (
-                 self.get_site(), self.kwargs['api_key'], keyword, int(time.time()))
+                self.get_site(), self.kwargs['api_key'], keyword, int(time.time()))
         )
 
     def automatic_page_loading(self, url) -> Torrents:
@@ -57,7 +84,7 @@ class Jackett(metaclass=ABCMeta):
         if res is None:
             return search_result
         result = res.json()
-        if 'Results' in result.keys() and len(result['Results']) >0:
+        if 'Results' in result.keys() and len(result['Results']) > 0:
             search_result = self.parse_torrents(result['Results'])
         return search_result
 
@@ -65,9 +92,9 @@ class Jackett(metaclass=ABCMeta):
         search_result = []
         for r in result:
             t = Torrent()
-            t.site_name = self.get_site_name() + '_' + r['Tracker']
+            t.site_name = self.get_site_name()
             t.site = self.get_site()
-            types = StringUtils.split(r['CategoryDesc'],'/')
+            types = Jackett.split(r['CategoryDesc'], '/')
             t.primitive_type = types[0]
             if t.primitive_type == 'Movies':
                 t.type = TorrentType.Movie
@@ -85,11 +112,29 @@ class Jackett(metaclass=ABCMeta):
             t.subject = r['Description']
             t.url = r['Link']
             # t.movies_release_year = mp.parse_year_by_str_list([t.name, t.subject])
-            t.id = r['Guid']
+            id_match = re.findall(r'id=(\d+)', r['Guid'])
+            if id_match is not None and len(id_match) > 0:
+                t.id = id_match[0]
+            else:
+                t.id = int(time.time())
             t.upload_count = r['Seeders']
             t.download_count = r['Grabs']
             t.red_seed = r['Seeders'] == 0
-            t.publish_time = datetime.datetime.strptime(r['PublishDate'], '%Y-%m-%dT%H:%M:%S')
+            # t.publish_time = datetime.datetime.now()
+            try:
+                if r['PublishDate'] is not None:
+                    dateMatch = re.findall(
+                        r'(\d{4}-\d{2}-\d{2}).*(\d{2}:\d{2}:\d{2}).*?([\+\-]\d{2}:\d{2})?$', r['PublishDate'])
+                    if len(dateMatch) > 0:
+                        timedelta = datetime.timedelta()
+                        if dateMatch[0][2] != '':
+                            timedelta = datetime.timedelta(hours=8) - datetime.datetime.strptime(dateMatch[0][2].replace(':', ''),'%z').utcoffset()
+                        t.publish_time = datetime.datetime.strptime(
+                            dateMatch[0][0] + ' ' + dateMatch[0][1], '%Y-%m-%d %H:%M:%S') + timedelta
+                    else:
+                        logging.error('未识别jackett时间格式：%s' % r['PublishDate'])
+            except Exception as e:
+                logging.error('未识别jackett时间格式：%s' % r['PublishDate'])
             t.file_size = round(r['Size'] / 1024 / 1024, 2)
             if r['DownloadVolumeFactor'] == 0:
                 t.free_deadline = datetime.datetime.max

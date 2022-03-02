@@ -28,7 +28,7 @@ class NexusProgramSite(PTSite, metaclass=ABCMeta):
     def match_user(self, text):
         if text is None or text.strip() == '':
             return None
-        match_login_user = re.search(r'class=[\'"][^\'"]+[\'"]>(?:<a.+>)<b>(.+)</b>.*</a>.*</span>', text)
+        match_login_user = re.search(r'class=[\'"][^\'"]+[\'"]>(?:<a.+>)<b\s*>(.+)</b>.*</a>.*</span>', text)
         if match_login_user:
             return StringUtils.trimhtml(match_login_user.group(1))
         else:

@@ -37,6 +37,13 @@ docker run -itd --restart=always --name=movie-robot -v /volume1/docker_stable/mo
 # 更新日志
 ## 如何保持机器人是最新版本
 Docker应用升级指南：https://feather-purple-bdd.notion.site/docker-09e1db16b2b14040840bd2f5660e666c
+
+2022.02.28
+1. 新增Beta版tag
+2. 增加pttime、ourbits以及jackett支持
+3. 优化TR部分情况下查找种子报错
+4. 电视剧支持首发过滤
+
 2022.02.27
 1. 馒头恢复正常，去掉浏览器内核，发布0.1正式版
 2. 修复btschool的BUG
