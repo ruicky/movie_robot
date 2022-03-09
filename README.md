@@ -19,9 +19,7 @@ https://registry.hub.docker.com/r/yipengfei/movie-robot/
 # 功能
 WebUI功能预览
 
-<img src="https://raw.githubusercontent.com/pofey/movie_robot/main/doc/images/webui-search.jpg" width="300" height="650"/>
-<img src="https://raw.githubusercontent.com/pofey/movie_robot/main/doc/images/webui-downloading-dark.jpg" width="300" height="650"/>
-<img src="https://raw.githubusercontent.com/pofey/movie_robot/main/doc/images/webui-downloading.jpg" width="300" height="650"/>
+<img src="https://raw.githubusercontent.com/pofey/movie_robot/main/doc/images/webui-search.jpg" width="300" height="650"/><img src="https://raw.githubusercontent.com/pofey/movie_robot/main/doc/images/webui-downloading-dark.jpg" width="300" height="650"/><img src="https://raw.githubusercontent.com/pofey/movie_robot/main/doc/images/webui-downloading.jpg" width="300" height="650"/>
 
 定时自动从豆瓣电影的想看、在看、看过中获取影音信息，然后去PT站（支持多家站点）自动检索种子，找到最佳资源后按豆瓣电影分类提交到BT下载工具下载。在下载前，会自动检查你的Emby中是否已经存在。
 基于此功能机制，还顺带具备了下列功能：
