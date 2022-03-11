@@ -1,10 +1,9 @@
-app:
-  server_url: 'http://'
 web:
   host: '0.0.0.0'
   port: 1329
   username: admin
   password: admin
+  server_url: 'http://'
   search:
     default_rule_name: 'compress'
 download_client:
