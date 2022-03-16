@@ -1,20 +1,16 @@
 # Docker官方镜像
 https://registry.hub.docker.com/r/yipengfei/movie-robot/
 
-手把手教你安装：https://feather-purple-bdd.notion.site/b6c925bf2a9e44548bd4bdeea7d06946
-关于机器人智能选择策略的详细说明和思考：https://feather-purple-bdd.notion.site/12f6d44243194c8c96a7e000b9dde023
+# 前端源代码
+https://github.com/pofey/movie-robot-frontend
+
 # 特别说明
-现在只有两种方式可以获得激活码使用本镜像：
-* 如果你是开发者，可以扩展适配一个pt站点，可以获得激活码一枚。pt站的适配支持，源码中给出了一个示范；
+激活码获取方式：
+* 成为认证开发者，持续贡献，获得激活码，以及少量的激活码发放权。
 * 通过打赏作者，可以获得激活码，现在永久买断使用权128元，打赏码在下面，也可以直接访问：https://yee-1254270141.cos.ap-beijing.myqcloud.com/movie_robot/pay.jpg
 * 如果你有其他为项目作出重大贡献的行为，也可以获得激活码。
 
-[申请一周体验激活码](https://docs.qq.com/form/page/DS3FsQktHcGJ0b2xH)
-2022.03.04说明，近期工作忙，开发web中，没时间处理和回答新人配置问题，停止发放免费激活码
-
 官方telgram免费大群：[加入智能影音机器人交流群](https://t.me/+shOuvzcee9I4ZDll)
-进群有机会获得免费的体验码
-
 
 # 功能
 WebUI功能预览
@@ -29,7 +25,7 @@ WebUI功能预览
 
 针对新增下载和存量硬盘的影视库，机器人还可以帮你对乱七八糟下载种子名做标准化整理，整理后会按电影名+年份+tmdbid的方式存储，可以使用硬链接或复制模式的整理方式。
 # 当前支持的站点
-## mteam、hdsky、tjupt、hdchina、ssd、chdbits、keepfrds
+## mteam、hdsky、tjupt、hdchina、ssd、chdbits、keepfrds、柠檬
 
 # 更新日志
 ## 如何保持机器人是最新版本
