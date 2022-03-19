@@ -1,0 +1,153 @@
+web:
+  host: '0.0.0.0'
+  port: 1329
+  username: admin
+  password: admin
+  server_url: 'http://'
+  search:
+    default_rule_name: 'compress'
+download_client:
+  qbittorrent:
+    default: true
+    username: admin
+    password: admin
+    need_login: false
+    url: http://192.168.1.111:8080/
+  transmission:
+    default: false
+    host: '192.168.1.10'
+    port: 9091
+    username: 'admin'
+    password: 'admin'
+media_path:
+  - media_type: 'movie'
+    download_path: ''
+    source_dir: ''
+    target_dir: ''
+    file_process_mode: 'link'
+media_server:
+  emby:
+    api_key: 0084ba86b8ca4139ac134465c414fb88
+    host: video.yee.one
+    https: false
+    port: 8000
+  plex:
+    url: 'http://192.168.1.111:32400'
+    token: ''
+site:
+  mteam:
+    alias: '馒头'
+    cookie: ''
+    web_search: true
+    smart_download: true
+movie_metadata:
+  tmdb:
+    api_key: ''
+  fanart:
+    api_key: ''
+  douban:
+    users:
+      - id: ''
+        nickname: ''
+        cookie: ''
+        pull_types: 
+          - 'wish'
+          - 'do'
+        pull_time_range: 365
+        auto_tagging: false
+        score_rule: 'compress'
+    tags_config:
+      - tag_name: '原盘珍藏'
+        score_rule: 'collection'
+      - tag_name: '随便看看'
+        score_rule: 'compact'
+      - tag_name: '追剧'
+        name_keyword:
+          - 'tjupt'
+        score_rule: 'compress'
+notify_channel:
+  bark:
+    default: false
+    push_url:
+      - 'https://api.day.app/yourtoken/'
+    users:
+      - nickname: 'user1'
+        push_url: ''
+      - nickname: 'user2'
+        push_url: ''
+    params:
+      sound: 'chime'
+      isArchive: 1
+      group: '电影机器人'
+    message_template:
+      movie_completed:
+        title: '电影机器人'
+        message: '${nickname}添加的电影 ${name}(${year})下载完毕'
+      series_completed:
+        title: '电影机器人'
+        message: '${nickname}添加的剧集 ${name}(${year})第${episodes}集下载完毕'
+  qywx:
+    default: true
+    touser: '@all'
+    users:
+      - nickname: 'user1'
+        touser: ''
+      - nickname: 'user2'
+        touser: ''
+    corpid: ''
+    corpsecret: ''
+    agentid: 100001
+    receive:
+      token: ''
+      aes_key: ''
+    message_template:
+      movie_completed:
+        title: '${name} (${year}) 评分:${rating}'
+        message: '${nickname}添加的电影 ${name}(${year})下载完毕'
+      series_completed:
+        title: '${name} (${year}) 评分:${rating}'
+        message: '${nickname}添加的剧集 ${name}(${year})第${episodes}集下载完毕'
+  pushdeer:
+    # pushdeer 的api地址，默认是官方，可以改为自建
+    api: 'https://api2.pushdeer.com/message/push'
+    # 默认推送pushkey,所有推送信息都会给这个pushkey推送
+    pushkey: ''
+    # 关联豆瓣人员的pushkey，通过 movies_config.yml配置的nickname来给该用户下载的视频独立推送
+    users:
+      - nickname: 'user1'
+        pushkey: ''
+      - nickname: 'user2'
+        pushkey: ''
+    message_template:
+      movie_completed:
+        title: '${name} (${year}) 下载完毕'
+        message: |
+          ## ${nickname} 想看的 电影 ${name}(${year})下载完毕
+          ![${name}](${cover})
+      series_completed:
+        title: '${name} (${year}) 下载完毕'
+        message: |
+          ## ${nickname} 想看的 剧集 ${name}(${year})第${episodes}集下载完毕
+          ![${name}](${cover})
+  wxpusher:
+    # wxpusher的 appToken
+    appToken: ''
+    # 默认推送的uid,所有推送信息都会给这个uid推送
+    uid: ''
+    # 关联豆瓣人员的uid，通过 movies_config.yml配置的nickname来给该用户下载的视频独立推送
+    users:
+      - nickname: 'user1'
+        uid: ''
+      - nickname: 'user2'
+        uid: ''
+    message_template:
+      movie_completed:
+        title: '${name} (${year}) 下载完毕'
+        message: |
+          ## ${nickname} 想看的 电影 ${name}(${year})下载完毕
+          ![${name}](${cover})
+      series_completed:
+        title: '${name} (${year}) 下载完毕'
+        message: |
+          ## ${nickname} 想看的 剧集 ${name}(${year})第${episodes}集下载完毕
+          ![${name}](${cover})
