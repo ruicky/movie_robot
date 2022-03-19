@@ -71,8 +71,11 @@ class PTHDFansV1(NexusProgramSite):
         search_result = []
         if not soup.find('table', class_='torrents'):
             return []
-        for i, item in enumerate(
-                soup.find('table', class_='mainouter').find('table', class_='torrents').findAll('tr')[1:]):
+        try:
+            find_tr = soup.find('table', class_='mainouter').find('table', class_='torrents').findAll('tr')[1:]
+        except Exception as e:
+            find_tr = []
+        for i, item in enumerate(find_tr):
             rowfollow_tag = item.findAll('td', 'rowfollow')
             if len(rowfollow_tag) != 0:
                 t = Torrent()
@@ -136,7 +139,7 @@ class PTHDFansV1(NexusProgramSite):
                 # 下载人数
                 t.download_count = int(rowfollow_tag[6].text.replace(',', ''))
                 search_result.append(t)
-            return search_result
+        return search_result
 
     def parse_download_filename(self, response):
         if 'Content-Disposition' not in response.headers:
