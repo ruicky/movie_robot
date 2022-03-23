@@ -28,7 +28,7 @@ WebUI功能预览
 
 针对新增下载和存量硬盘的影视库，机器人还可以帮你对乱七八糟下载种子名做标准化整理，整理后会按电影名+年份+tmdbid的方式存储，可以使用硬链接或复制模式的整理方式。
 # 当前支持的站点
-## mteam、hdsky、tjupt、hdchina、ssd、chdbits、keepfrds、btschool、putao、pterclub、pttime、lemonhd、ourbits、pthome
+## 馒头、彩虹岛、天空、TTG、SSD、朋友、北洋园、柠檬、我堡、猫站、葡萄、hdchina、hdfans、pthome、btschool、pttime
 
 # 更新日志
 ## 如何保持机器人是最新版本
