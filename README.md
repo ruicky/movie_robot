@@ -5,6 +5,9 @@ https://registry.hub.docker.com/r/yipengfei/movie-robot/
 https://github.com/pofey/movie-robot-frontend
 
 # 特别说明
+发上一枚可以体验到4月30日的激活码，可以随意传播，邀请自己的朋友来玩，430结束，捐助获得激活码的价格将会提高，是否停止开放永久版也在考虑中。
+seGRdbqgVolN0JveBe5p58fnXNGcw9TbtyFoWoLKqOtkU8JrCZGaa3Bj8OWhD8AVXaqTYYja4RO6f2o32To4cDJhz7n6JV7PakwONqg5fZfTw3YkDMICj85FncwEUjuH
+
 激活码获取方式：
 * 成为认证开发者，持续贡献，获得激活码，以及少量的激活码发放权。
 * 通过打赏作者，可以获得激活码，现在永久买断使用权128元，打赏码在下面，也可以直接访问：https://yee-1254270141.cos.ap-beijing.myqcloud.com/movie_robot/pay.jpg
@@ -32,6 +35,7 @@ WebUI功能预览
 Docker应用升级指南：https://feather-purple-bdd.notion.site/docker-09e1db16b2b14040840bd2f5660e666c
 
 2022.03.23
+
 Docker镜像的Beta标签，已经升级至最新准正式版RC1 此版本为跨越式重大升级，正式告别手动编写配置文件，全部优化为WEB页面配置流程。
 如果你是老用户：你所使用的任意一个版本都可以直升Beta，配置目录用现有的，但初次启动需要打开Web做个简单的初始化流程。当然你也可以继续停留在latest养老！
 如果你是新用户：或之前配置和db不重要（删了或换新配置路径），那么请直接拉Beta体验吧！
@@ -42,10 +46,6 @@ Docker镜像的Beta标签，已经升级至最新准正式版RC1 此版本为跨
 4. 新增立即触发豆瓣任务、微信搜索等若干小功能；
 5. 以上所有WEB功能均适配了手机版，Android、iPhone均可直接加为桌面App，PC端也开放了搜索参数，可以整合浏览器工具；
 6. 修复数不清的BUG，优化数不清的底层算法逻辑；
-
-在此，发上一枚可以体验到4月30日的激活码，可以随意传播，邀请自己的朋友来玩，430结束，捐助获得激活码的价格将会提高，是否停止开放永久版也在考虑中。
-
-seGRdbqgVolN0JveBe5p58fnXNGcw9TbtyFoWoLKqOtkU8JrCZGaa3Bj8OWhD8AVXaqTYYja4RO6f2o32To4cDJhz7n6JV7PakwONqg5fZfTw3YkDMICj85FncwEUjuH
 
 
 2022.03.04(Beta220304v1)
