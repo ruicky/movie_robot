@@ -1,6 +1,6 @@
-id: beitai
-name: 备胎
-domain: https://www.beitai.pt/
+id: hdsky
+name: 天空
+domain: https://hdsky.me/
 encoding: UTF-8
 
 login:
@@ -15,11 +15,14 @@ category_mappings:
   - { id: 403, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Shows/综艺" }
   - { id: 406, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "MusicVideo/音乐MV" }
   - { id: 407, cate_level1: TV, cate_level2: TV/Sport, cate_level2_desc: "Sports/运体" }
-  - { id: 409, cate_level1: Other, cate_level2: Other, cate_level2_desc: "Misc/其他" }
   - { id: 408, cate_level1: Music, cate_level2: Audio,cate_level2_ desc: "HQ Audio/无损音乐" }
+  - { id: 409, cate_level1: Other, cate_level2: Other, cate_level2_desc: "Misc/其他" }
+  - { id: 410, cate_level1: Movie, cate_level2: Movies, cate_level2_: "iPad/iPad影视" }
+  - { id: 411, cate_level1: TV, cate_level2: TV/剧集(合集）, cate_level2_: "TV Series/剧集(合集）" }
+
 
 userinfo:
-  path: https://www.beitai.pt/index.php
+  path: https://hdsky.me/rules.php
   item:
     selector: table[id="info_block"]
   fields:
@@ -119,14 +122,11 @@ torrents:
       selector: a[href^="details.php?id="]
       attribute: href
     download:
-      selector: a[href^="download.php?id="]
-      attribute: href
+      selector: form[action*="/download.php?id="]
+      attribute: action
     imdbid:
       selector: div.imdb_100 > a
       attribute: href
-      filters:
-        - name: re_search
-          args: [ 'tt\d+',0 ]
     date_elapsed:
       # 站点设置，已去时间 (默认)
       selector: td:nth-child(4) > span[title]
@@ -142,7 +142,7 @@ torrents:
         - name: dateparse
           args: "%Y-%m-%d %H:%M:%S"
     size:
-      selector: td:nth-child(5)
+      selector: td.rowfollow:nth-child(5)
     seeders:
       selector: td:nth-child(6)
     leechers:
@@ -175,4 +175,7 @@ torrents:
           args: "%Y-%m-%d %H:%M:%S"
     description:
       selector: td:nth-child(2) > table > tr > td.embedded
-      contents: -1
+      remove: img,a,b,span
+      filters:
+        - name: replace
+          args: [ "[优惠剩余时间：]","" ]

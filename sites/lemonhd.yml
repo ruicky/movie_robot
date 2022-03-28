@@ -25,7 +25,7 @@ category_id_mapping:
   - { id: music, mapping: [ 408,500 ] }
   - { id: other, mapping: 409 }
 userinfo:
-  path: https://lemonhd.org/index.php
+  path: https://lemonhd.org/rules.php
   item:
     selector: table[id="info_block"] > tr > td > table > tr > td > table
   fields:
@@ -86,7 +86,7 @@ search:
     # 2 搜免费 全部则留空
     spstate: "{% if query.free %}2{% endif %}"
     # imdb 搜imdbid name 标题、副标题
-    search_area: "{% if query.imdb_id %}imdb{{ else }}name{%endif%}"
+    search_area: "{% if query.imdb_id %}imdb{% else %}name{%endif%}"
     suggest: 0
     stype: s
     column: "{{ query.sort }}"

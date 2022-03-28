@@ -1,6 +1,6 @@
-id: beitai
-name: 备胎
-domain: https://www.beitai.pt/
+id: ssd
+name: SSD
+domain: https://springsunday.net/
 encoding: UTF-8
 
 login:
@@ -8,20 +8,20 @@ login:
     selector: a[href="logout.php"]
 
 category_mappings:
-  - { id: 401, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies/电影" }
-  - { id: 404, cate_level1: Documentary, cate_level2: TV/Documentary, cate_level2_desc: "Documentaries/纪录片" }
-  - { id: 405, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "Animations/动漫" }
-  - { id: 402, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/剧集" }
-  - { id: 403, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Shows/综艺" }
-  - { id: 406, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "MusicVideo/音乐MV" }
-  - { id: 407, cate_level1: TV, cate_level2: TV/Sport, cate_level2_desc: "Sports/运体" }
-  - { id: 409, cate_level1: Other, cate_level2: Other, cate_level2_desc: "Misc/其他" }
-  - { id: 408, cate_level1: Music, cate_level2: Audio,cate_level2_ desc: "HQ Audio/无损音乐" }
+  - { id: 501, cate_level1: Movie, cate_level2 Movies, cate_level2_desc: "Movies(电影)" }
+  - { id: 502, cate_level1: TV, cate_level2 TV, cate_level2_desc: "TV Series(剧集)" }
+  - { id: 503, cate_level1: Documentary, cate_level2 TV/Documentary, cate_level2_desc: "Docs(纪录)" }
+  - { id: 504, cate_level1: Anime, cate_level2 TV/Anime, cate_level2_desc: "Animations(动画)" }
+  - { id: 505, cate_level1: TV, cate_level2 TV, cate_level2_desc: "TV Shows(综艺)" }
+  - { id: 506, cate_level1: TV, cate_level2 TV/Sport, cate_level2_desc: "Sports(体育)" }
+  - { id: 507, cate_level1: Music, cate_level2 Audio/Video, cate_level2_desc: "MV(音乐视频)" }
+  - { id: 508, cate_level1: Music, cate_level2 Audio, cate_level2_desc: "Music(音乐)" }
+  - { id: 509, cate_level1: Other, cate_level2 Other, cate_level2_desc: "Others(其他)" }
 
 userinfo:
-  path: https://www.beitai.pt/index.php
+  path: https://springsunday.net/rules.php
   item:
-    selector: table[id="info_block"]
+    selector: div[id="info_block"]
   fields:
     uid:
       default_value: 0
@@ -85,6 +85,8 @@ search:
     search_area: "{% if query.imdb_id %}4{% else %}0{%endif%}"
     # 0 AND, 1 OR, 2 exact
     search_mode: 0
+    # 0 all, 1 popular, 2 classic, 3 recomended, 4 2+3
+    pick: 0
     sort: "{{ query.sort }}"
     type: "{{ query.type }}"
     page: "{{ query.page }}"
@@ -99,6 +101,12 @@ torrents:
       filters:
         - name: re_search
           args: [ '\d+', 0 ]
+    category:
+      selector: a[href^="?cat="]
+      attribute: href
+      filters:
+        - name: querystring
+          args: cat
     title_default:
       selector: a[href^="details.php?id="]
     title_optional:
@@ -107,14 +115,6 @@ torrents:
       attribute: title
     title:
       text: "{% if fields['title_optional'] %}{{ fields['title_optional'] }}{% else %}{{ fields['title_default'] }}{% endif %}"
-    category:
-      selector: a[href^="?cat="]
-      attribute: href
-      filters:
-        - name: replace
-          args: [ "?", "" ]
-        - name: querystring
-          args: cat
     details:
       selector: a[href^="details.php?id="]
       attribute: href
@@ -122,19 +122,19 @@ torrents:
       selector: a[href^="download.php?id="]
       attribute: href
     imdbid:
-      selector: div.imdb_100 > a
+      selector: a[href*="imdb.com/title/tt"]
       attribute: href
       filters:
         - name: re_search
           args: [ 'tt\d+',0 ]
     date_elapsed:
-      # 站点设置，已去时间 (默认)
-      selector: td:nth-child(4) > span[title]
+      # time type: time elapsed (default)
+      selector: td.rowfollow:nth-last-child(6) > span[title]
       attribute: title
       optional: true
     date_added:
-      # 站点设置，实际时间
-      selector: td:nth-child(4):not(:has(span))
+      # time added
+      selector: td.rowfollow:nth-last-child(6):not(:has(span))
       optional: true
     date:
       text: "{% if fields['date_elapsed'] or fields['date_added'] %}{{ fields['date_elapsed'] if fields['date_elapsed'] else fields['date_added'] }}{% else %}now{% endif %}"
@@ -142,13 +142,13 @@ torrents:
         - name: dateparse
           args: "%Y-%m-%d %H:%M:%S"
     size:
-      selector: td:nth-child(5)
+      selector: td.rowfollow:nth-last-child(5)
     seeders:
-      selector: td:nth-child(6)
+      selector: td.rowfollow:nth-last-child(4)
     leechers:
-      selector: td:nth-child(7)
+      selector: td.rowfollow:nth-last-child(3)
     grabs:
-      selector: td:nth-child(8)
+      selector: td.rowfollow:nth-last-child(2)
     downloadvolumefactor:
       case:
         img.pro_free: 0
@@ -174,5 +174,5 @@ torrents:
         - name: dateparse
           args: "%Y-%m-%d %H:%M:%S"
     description:
-      selector: td:nth-child(2) > table > tr > td.embedded
-      contents: -1
+      selector: td:nth-child(2)
+      remove: a, img

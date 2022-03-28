@@ -1,6 +1,6 @@
-id: beitai
-name: 备胎
-domain: https://www.beitai.pt/
+id: ourbits
+name: 我堡
+domain: https://ourbits.club/
 encoding: UTF-8
 
 login:
@@ -8,18 +8,20 @@ login:
     selector: a[href="logout.php"]
 
 category_mappings:
-  - { id: 401, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies/电影" }
-  - { id: 404, cate_level1: Documentary, cate_level2: TV/Documentary, cate_level2_desc: "Documentaries/纪录片" }
-  - { id: 405, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "Animations/动漫" }
-  - { id: 402, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/剧集" }
-  - { id: 403, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Shows/综艺" }
-  - { id: 406, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "MusicVideo/音乐MV" }
-  - { id: 407, cate_level1: TV, cate_level2: TV/Sport, cate_level2_desc: "Sports/运体" }
-  - { id: 409, cate_level1: Other, cate_level2: Other, cate_level2_desc: "Misc/其他" }
-  - { id: 408, cate_level1: Music, cate_level2: Audio,cate_level2_ desc: "HQ Audio/无损音乐" }
-
+  - { id: 401, cate_level1: Movie, cate_level2: "Movies", cate_level2_desc: "Movies" }
+  - { id: 402, cate_level1: Movie, cate_level2: "Movies-3D", cate_level2_desc: "Movies-3D" }
+  - { id: 419, cate_level1: Music, cate_level2: "Concert", cate_level2_desc: "Concert" }
+  - { id: 412, cate_level1: TV, cate_level2: "TV-Episode", cate_level2_desc: "TV-Episode" }
+  - { id: 405, cate_level1: TV, cate_level2: "TV-Pack", cate_level2_desc: "TV-Pack" }
+  - { id: 413, cate_level1: TV, cate_level2: "TV-Show", cate_level2_desc: "TV-Show" }
+  - { id: 410, cate_level1: Documentary, cate_level2: "Documentary", cate_level2_desc: "Documentary" }
+  - { id: 411, cate_level1: Anime, cate_level2: "Animation", cate_level2_desc: "Animation" }
+  - { id: 415, cate_level1: TV, cate_level2: "Sports", cate_level2_desc: "Sports" }
+  - { id: 414, cate_level1: Music, cate_level2: "Music-Video", cate_level2_desc: "Music-Video" }
+  - { id: 414, cate_level1: Music, cate_level2: "Music-Video", cate_level2_desc: "Music-Video" }
+  - { id: 416, cate_level1: Music, cate_level2: "Music", cate_level2_desc: "Music" }
 userinfo:
-  path: https://www.beitai.pt/index.php
+  path: https://ourbits.club/rules.php
   item:
     selector: table[id="info_block"]
   fields:
@@ -39,7 +41,7 @@ userinfo:
       selector: a[href^="userdetails.php?id="]
     share_ratio:
       default_value: ''
-      selector: font[class="color_ratio"]
+      selector: span[class="color_ratio"]
       method: next_sibling
       filters:
         - name: replace
@@ -99,6 +101,12 @@ torrents:
       filters:
         - name: re_search
           args: [ '\d+', 0 ]
+    category:
+      selector: a[href^="?cat="]
+      attribute: href
+      filters:
+        - name: querystring
+          args: cat
     title_default:
       selector: a[href^="details.php?id="]
     title_optional:
@@ -107,33 +115,28 @@ torrents:
       attribute: title
     title:
       text: "{% if fields['title_optional'] %}{{ fields['title_optional'] }}{% else %}{{ fields['title_default'] }}{% endif %}"
-    category:
-      selector: a[href^="?cat="]
-      attribute: href
-      filters:
-        - name: replace
-          args: [ "?", "" ]
-        - name: querystring
-          args: cat
     details:
       selector: a[href^="details.php?id="]
       attribute: href
     download:
       selector: a[href^="download.php?id="]
       attribute: href
-    imdbid:
-      selector: div.imdb_100 > a
-      attribute: href
-      filters:
-        - name: re_search
-          args: [ 'tt\d+',0 ]
+    size:
+      selectors: td:nth-child(5)
+      index: 1
+    grabs:
+      selector: td:nth-child(8)
+    seeders:
+      selector: td:nth-child(6)
+    leechers:
+      selector: td:nth-child(7)
     date_elapsed:
-      # 站点设置，已去时间 (默认)
+      # time type: time elapsed (default)
       selector: td:nth-child(4) > span[title]
       attribute: title
       optional: true
     date_added:
-      # 站点设置，实际时间
+      # time added
       selector: td:nth-child(4):not(:has(span))
       optional: true
     date:
@@ -141,14 +144,6 @@ torrents:
       filters:
         - name: dateparse
           args: "%Y-%m-%d %H:%M:%S"
-    size:
-      selector: td:nth-child(5)
-    seeders:
-      selector: td:nth-child(6)
-    leechers:
-      selector: td:nth-child(7)
-    grabs:
-      selector: td:nth-child(8)
     downloadvolumefactor:
       case:
         img.pro_free: 0
@@ -166,13 +161,11 @@ torrents:
     free_deadline:
       default_value: "{% if fields['downloadvolumefactor']==0 %}{{max_time}}{% endif%}"
       default_value_format: '%Y-%m-%d %H:%M:%S.%f'
-      selector: img.pro_free,img.pro_free2up
-      attribute: onmouseover
+      selector: 'td[class="embedded"] > b > span[title]'
+      attribute: title
       filters:
-        - name: re_search
-          args: [ '\d+-\d+-\d+ \d+:\d+:\d+', 0 ]
         - name: dateparse
           args: "%Y-%m-%d %H:%M:%S"
     description:
-      selector: td:nth-child(2) > table > tr > td.embedded
+      selector: table.torrentname > tr > td.embedded
       contents: -1

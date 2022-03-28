@@ -106,11 +106,11 @@ search:
     $raw: "{% for c in query.cates %}cat{{c}}=1&{% endfor %}"
     search: "{% if query.imdb_id %}{{query.imdb_id}}{%else%}{{query.keyword}}{% endif %}"
     # 0 incldead, 1 active, 2 dead
-    incldead: 0
+    incldead: 1
     # 0 all, 1 normal, 2 free, 3 2x, 4 2xfree, 5 50%, 6 2x50%, 7 30%
     spstate: "{% if query.free %}2{% else %}0{% endif %}"
     # 0 title, 1 descr, 3 uploader, 4 imdburl (searching imdburl does not work with tt1234567, but descr is good)
-    search_area: "{% if query.imdb_id %}1{{ else }}0{%endif%}"
+    search_area: "{% if query.imdb_id %}4{% else %}0{%endif%}"
     # 0 AND, 1 OR, 2 exact
     search_mode: 0
     sort: "{{ query.sort }}"
@@ -196,7 +196,7 @@ torrents:
         img.pro_2up: 2
         "*": 1
     free_deadline:
-      default_value: "{% if fields['downloadvolumefactor']==0 %}{{now}}{% endif%}"
+      default_value: "{% if fields['downloadvolumefactor']==0 %}{{max_time}}{% endif%}"
       default_value_format: '%Y-%m-%d %H:%M:%S.%f'
       selector: span[style="font-weight:normal"]
       filters:

@@ -1,6 +1,6 @@
-id: beitai
-name: 备胎
-domain: https://www.beitai.pt/
+id: hdfans
+name: hdfans
+domain: https://hdfans.org/
 encoding: UTF-8
 
 login:
@@ -8,18 +8,24 @@ login:
     selector: a[href="logout.php"]
 
 category_mappings:
-  - { id: 401, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies/电影" }
-  - { id: 404, cate_level1: Documentary, cate_level2: TV/Documentary, cate_level2_desc: "Documentaries/纪录片" }
-  - { id: 405, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "Animations/动漫" }
-  - { id: 402, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/剧集" }
-  - { id: 403, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Shows/综艺" }
-  - { id: 406, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "MusicVideo/音乐MV" }
-  - { id: 407, cate_level1: TV, cate_level2: TV/Sport, cate_level2_desc: "Sports/运体" }
-  - { id: 409, cate_level1: Other, cate_level2: Other, cate_level2_desc: "Misc/其他" }
-  - { id: 408, cate_level1: Music, cate_level2: Audio,cate_level2_ desc: "HQ Audio/无损音乐" }
+  - { id: 401, cate_level1: Movie, cate_level2: "Movies/电影", cate_level2_desc: "Movies/电影" }
+  - { id: 402, cate_level1: TV, cate_level2: "TV Series/电视剧", cate_level2_desc: "TV Series/电视剧" }
+  - { id: 403, cate_level1: Documentary, cate_level2: "Documentaries/纪录片", cate_level2_desc: "Documentaries/纪录片" }
+  - { id: 406, cate_level1: Music, cate_level2: "Music/音乐", cate_level2_desc: "Music/音乐" }
+  - { id: 416, cate_level1: TV, cate_level2: "TV Shows/综艺", cate_level2_desc: "TV Shows/综艺" }
+  - { id: 417, cate_level1: Anime, cate_level2: "Animations/动漫、动画", cate_level2_desc: "Animations/动漫、动画" }
+  - { id: 407, cate_level1: Music, cate_level2: "Music Videos/音乐视频", cate_level2_desc: "Music Videos/音乐视频" }
+  - { id: 404, cate_level1: Other, cate_level2: "Education/教育", cate_level2_desc: "Education/教育" }
+  - { id: 405, cate_level1: Music, cate_level2: "Audio Books/有声读物", cate_level2_desc: "Audio Books/有声读物" }
+  - { id: 409, cate_level1: TV, cate_level2: "Drama/戏剧", cate_level2_desc: "Drama/戏剧" }
+  - { id: 418, cate_level1: TV, cate_level2: "Sports/体育", cate_level2_desc: "Sports/体育" }
+  - { id: 419, cate_level1: Other, cate_level2: "Software/软件", cate_level2_desc: "Software/软件" }
+  - { id: 421, cate_level1: Game, cate_level2: "Games/游戏", cate_level2_desc: "Games/游戏" }
+  - { id: 423, cate_level1: Other, cate_level2: "E-Books/电子书", cate_level2_desc: "E-Books/电子书" }
+  - { id: 410, cate_level1: Other, cate_level2: "Others/其他", cate_level2_desc: "Others/其他" }
 
 userinfo:
-  path: https://www.beitai.pt/index.php
+  path: https://hdfans.org/rules.php
   item:
     selector: table[id="info_block"]
   fields:
@@ -99,6 +105,12 @@ torrents:
       filters:
         - name: re_search
           args: [ '\d+', 0 ]
+    category:
+      selector: a[href^="?cat="]
+      attribute: href
+      filters:
+        - name: querystring
+          args: cat
     title_default:
       selector: a[href^="details.php?id="]
     title_optional:
@@ -107,33 +119,27 @@ torrents:
       attribute: title
     title:
       text: "{% if fields['title_optional'] %}{{ fields['title_optional'] }}{% else %}{{ fields['title_default'] }}{% endif %}"
-    category:
-      selector: a[href^="?cat="]
-      attribute: href
-      filters:
-        - name: replace
-          args: [ "?", "" ]
-        - name: querystring
-          args: cat
     details:
       selector: a[href^="details.php?id="]
       attribute: href
     download:
       selector: a[href^="download.php?id="]
       attribute: href
-    imdbid:
-      selector: div.imdb_100 > a
-      attribute: href
-      filters:
-        - name: re_search
-          args: [ 'tt\d+',0 ]
+    size:
+      selector: td:nth-child(5)
+    grabs:
+      selector: td:nth-child(8)
+    seeders:
+      selector: td:nth-child(6)
+    leechers:
+      selector: td:nth-child(7)
     date_elapsed:
-      # 站点设置，已去时间 (默认)
+      # time type: time elapsed (default)
       selector: td:nth-child(4) > span[title]
       attribute: title
       optional: true
     date_added:
-      # 站点设置，实际时间
+      # time added
       selector: td:nth-child(4):not(:has(span))
       optional: true
     date:
@@ -141,14 +147,6 @@ torrents:
       filters:
         - name: dateparse
           args: "%Y-%m-%d %H:%M:%S"
-    size:
-      selector: td:nth-child(5)
-    seeders:
-      selector: td:nth-child(6)
-    leechers:
-      selector: td:nth-child(7)
-    grabs:
-      selector: td:nth-child(8)
     downloadvolumefactor:
       case:
         img.pro_free: 0
@@ -166,11 +164,9 @@ torrents:
     free_deadline:
       default_value: "{% if fields['downloadvolumefactor']==0 %}{{max_time}}{% endif%}"
       default_value_format: '%Y-%m-%d %H:%M:%S.%f'
-      selector: img.pro_free,img.pro_free2up
-      attribute: onmouseover
+      selector: 'td[class="embedded"] > font > span[title]'
+      attribute: title
       filters:
-        - name: re_search
-          args: [ '\d+-\d+-\d+ \d+:\d+:\d+', 0 ]
         - name: dateparse
           args: "%Y-%m-%d %H:%M:%S"
     description:
