@@ -1,29 +1,25 @@
 # Docker官方镜像
 https://registry.hub.docker.com/r/yipengfei/movie-robot/
 
-手把手教你安装：https://feather-purple-bdd.notion.site/b6c925bf2a9e44548bd4bdeea7d06946
-关于机器人智能选择策略的详细说明和思考：https://feather-purple-bdd.notion.site/12f6d44243194c8c96a7e000b9dde023
+# 前端源代码
+https://github.com/pofey/movie-robot-frontend
+
 # 特别说明
-现在只有两种方式可以获得激活码使用本镜像：
-* 如果你是开发者，可以扩展适配一个pt站点，可以获得激活码一枚。pt站的适配支持，源码中给出了一个示范；
-* 通过打赏作者，可以获得激活码，打赏码在下面，也可以直接访问：https://yee-1254270141.cos.ap-beijing.myqcloud.com/movie_robot/pay.jpg
+发上一枚可以体验到4月30日的激活码，可以随意传播，邀请自己的朋友来玩，430结束，捐助获得激活码的价格将会提高，是否停止开放永久版也在考虑中。
+seGRdbqgVolN0JveBe5p58fnXNGcw9TbtyFoWoLKqOtkU8JrCZGaa3Bj8OWhD8AVXaqTYYja4RO6f2o32To4cDJhz7n6JV7PakwONqg5fZfTw3YkDMICj85FncwEUjuH
+
+激活码获取方式：
+* 成为认证开发者，持续贡献，获得激活码，以及少量的激活码发放权。
+* 通过打赏作者，可以获得激活码，现在永久买断使用权128元，打赏码在下面，也可以直接访问：https://yee-1254270141.cos.ap-beijing.myqcloud.com/movie_robot/pay.jpg
 * 如果你有其他为项目作出重大贡献的行为，也可以获得激活码。
 
-# 启动命令
-```
-docker run -itd --restart=always --name=movie-robot -v /volume1/docker_stable/movie-robot:/data --env 'LICENSE_KEY=abc'  yipengfei/movie-robot:latest
-```
--v 中源路径改成你自己的
---env的激活码也改成你自己的
-
-[申请一周体验激活码](https://docs.qq.com/form/page/DS3FsQktHcGJ0b2xH)
-这个填好了我会每天晚上睡前发邀到邮箱里
-
 官方telgram免费大群：[加入智能影音机器人交流群](https://t.me/+shOuvzcee9I4ZDll)
-进群有机会获得免费的体验码
-
 
 # 功能
+WebUI功能预览
+
+<img src="https://raw.githubusercontent.com/pofey/movie_robot/main/doc/images/webui-search.jpg" width="300" height="650"/><img src="https://raw.githubusercontent.com/pofey/movie_robot/main/doc/images/webui-downloading-dark.jpg" width="300" height="650"/><img src="https://raw.githubusercontent.com/pofey/movie_robot/main/doc/images/search-ww.jpg" width="300" height="650"/><img src="https://raw.githubusercontent.com/pofey/movie_robot/main/doc/images/webui-downloading.jpg" width="300" height="650"/>
+
 定时自动从豆瓣电影的想看、在看、看过中获取影音信息，然后去PT站（支持多家站点）自动检索种子，找到最佳资源后按豆瓣电影分类提交到BT下载工具下载。在下载前，会自动检查你的Emby中是否已经存在。
 基于此功能机制，还顺带具备了下列功能：
 - 将一部刚上映，或者还没上映的电影加入想看，当PT站更新时会第一时间帮你下好，被Emby扫描到后直接观看。
@@ -32,11 +28,57 @@ docker run -itd --restart=always --name=movie-robot -v /volume1/docker_stable/mo
 
 针对新增下载和存量硬盘的影视库，机器人还可以帮你对乱七八糟下载种子名做标准化整理，整理后会按电影名+年份+tmdbid的方式存储，可以使用硬链接或复制模式的整理方式。
 # 当前支持的站点
-## mteam、hdsky、tjupt、hdchina、ssd、chdbits、keepfrds
+## 馒头、彩虹岛、天空、TTG、SSD、朋友、北洋园、柠檬、我堡、猫站、葡萄、hdchina、hdfans、pthome、btschool、pttime
 
 # 更新日志
 ## 如何保持机器人是最新版本
 Docker应用升级指南：https://feather-purple-bdd.notion.site/docker-09e1db16b2b14040840bd2f5660e666c
+
+2022.03.30
+Beta标签RC 10版本完成发布
+1. 重新适配全部PT站点，当前共支持17个，新版适配全部由我开发测试，数据质量可靠，增加了更多维度信息，更准确的分类信息；本次更新新增烧包、备胎站点支持，删除ptt；
+2. 搜索结果显示种子免费及折扣、2倍上传标签，搜索后种子链接可点击跳转到PT站；
+3. 重写智能下载的搜索逻辑，更多样的资源匹配机制，比以前智能化程度提升至少5倍；
+4. 重写剧集下载及追更逻辑，将不再重复下载全季完结包；
+5. 重写电影和剧集识别逻辑，利用重构后的PT站分类搜索能力，智能下载的准确率比之前提升至少5倍；
+6. 重写智能下载资源搜索后过滤逻辑，同时增加一些被过滤的详细说明日志，观察重写后的效果；
+7. 修复部分情况下，手动下载的电视剧，无法被监控识别的BUG（上一版为了解辅种问题引入）；
+8. 底层http访问机制升级，提升网络请求稳定性与效率；
+9. 优化下载记录页面样式，增加影视类型显示，名称和年份样式调整等，感谢@ruicky 大佬的改进与对前端部分源码作出的贡献！
+10. 增加纯黑色页面主题，感谢@jsl9208 大佬贡献的前端代码！
+11. 修复了很多bug；
+
+关于智能下载的逻辑，简述部分变化：
+
+1. 以前的剧集下载，会出全集下全集，多个资源包有完全重复的分集，不会做过滤，重构后逻辑变为当你本地缺少这部剧一半以上时，才会优先下完结全集包，否则会单集优先，同时增加交集过滤。
+2. 以前的豆瓣想看下载，只会按豆瓣上标的中文名去pt站搜索资源，有些命名不规范的就搜不到。重构的逻辑变为，先将豆瓣数据识别为tmdb信息，然后用中英双语或多中文名+英文去pt站搜索资源，然后对资源合并去重后进行处理，增强了资源匹配的覆盖度。
+3. 以前的pt搜索，会搜全量种子类型，一些游戏、音频、电子书资源，也会乱入，影响订阅追新的准确度。重构后，首先会精准的基于pt站分类去做搜索，再采用算法，做电影或剧集识别，交由过滤器处理，提高了准确率。
+4. 重构了过滤器机制，当前有六层过滤器，负责对pt搜索后结果，做精准筛选，这六种过滤器，会针对不同资源类别，不同数据情况，动态选择，以保证下到绝对准确的种子。这六层过滤，基本和人类去选择一个资源的过程相似。
+5. 还优化了数不清的细节，不做赘述。
+
+
+2022.03.23
+
+Docker镜像的Beta标签，已经升级至最新准正式版RC1 此版本为跨越式重大升级，正式告别手动编写配置文件，全部优化为WEB页面配置流程。
+如果你是老用户：你所使用的任意一个版本都可以直升Beta，配置目录用现有的，但初次启动需要打开Web做个简单的初始化流程。当然你也可以继续停留在latest养老！
+如果你是新用户：或之前配置和db不重要（删了或换新配置路径），那么请直接拉Beta体验吧！
+相比3月4号的版本，此版本更新内容如下：
+1. 所有网站访问、媒体服务器、下载工具、存储路径、影音识别、推送通知设置，豆瓣想看智能下载设置，全部可以在Web页面配置，告别配置文件；
+2. 新增多站点聚合搜索及直接下载能力，当前已支持站点：馒头、彩虹岛、天空、TTG、SSD、朋友、北洋园、柠檬、我堡、猫站、葡萄、hdchina、hdfans、pthome、btschool、pttime，几乎所有主流大站；
+3. 新增近期下载管理页面，此页面可以一览下载记录、下载进度（实时读取下载器）、对未识别或识别错的资源重新分析等一系列管理能力；
+4. 新增立即触发豆瓣任务、微信搜索等若干小功能；
+5. 以上所有WEB功能均适配了手机版，Android、iPhone均可直接加为桌面App，PC端也开放了搜索参数，可以整合浏览器工具；
+6. 修复数不清的BUG，优化数不清的底层算法逻辑；
+
+
+2022.03.04(Beta220304v1)
+1. 新增Web API系统，支持并行聚合多站搜索，按关键字或豆瓣id
+2. 利用API能力，新增微信搜索功能，可以在企业微信的应用设置消息接收，直接发送关键字搜索，搜索后经过机器人多策略排序后，点击直接下载
+3. 修复jackett的一些BUG
+4. 修复qbit下载器删除种子后报错的BUG
+5. 优化pthome用户名匹配
+6. 修复pt站种子剧集分析的BUG
+7. 修复SSD获取下载数错误的BUG 
 
 2022.02.28
 1. 新增Beta版tag

@@ -3,8 +3,8 @@
     "name_score": 0.3,
     "type_score": 0.4,
     "size_score": 0.05,
-    "upload_score": 0.125,
-    "download_score": 0.075,
+    "upload_score": 0.2,
+    "download_score": 0,
     "subtitle_score": 0.05,
     "free_score": 0
   },
