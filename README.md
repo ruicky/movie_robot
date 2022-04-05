@@ -35,7 +35,7 @@ WebUI功能预览
 Docker应用升级指南：https://feather-purple-bdd.notion.site/docker-09e1db16b2b14040840bd2f5660e666c
 
 2022.04.05
-1. 新增养站功能，自动进行流量管理，不管你有多少PT站，全部交给机器人打理，自动帮你下载最热门的free种子挂上传；详细功能介绍：https://feather-purple-bdd.notion.site/854f2ab70f394358b00b0ff9e2c1690a
+1. 新增养站功能，自动进行流量管理，不管你有多少PT站，全部交给机器人打理，自动帮你下载最热门的free种子挂上传；忘了PT站，好好看电影吧。详细功能介绍：https://feather-purple-bdd.notion.site/854f2ab70f394358b00b0ff9e2c1690a
 
 2022.04.02
 最新版在Beta标签，版本号：RC 20.6，修复几个重大BUG
