@@ -34,6 +34,9 @@ WebUI功能预览
 ## 如何保持机器人是最新版本
 Docker应用升级指南：https://feather-purple-bdd.notion.site/docker-09e1db16b2b14040840bd2f5660e666c
 
+2022.04.05
+1. 新增养站功能，自动进行流量管理，不管你有多少PT站，全部交给机器人打理，自动帮你下载最热门的free种子挂上传；详细功能介绍：https://feather-purple-bdd.notion.site/854f2ab70f394358b00b0ff9e2c1690a
+
 2022.04.02
 最新版在Beta标签，版本号：RC 20.6，修复几个重大BUG
 1. 修复因PT站副标题描述不规范，不含季或不含集时，可能造成剧集信息分析错误，进而导致重复下载资源的BUG；
