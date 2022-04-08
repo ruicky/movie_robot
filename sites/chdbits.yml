@@ -162,6 +162,16 @@ torrents:
       filters:
         - name: dateparse
           args: "%Y-%m-%d %H:%M:%S"
+    hr_days:
+      defualt_value: 0
+      selector: div.circle > div.circle-text
+      filters:
+        - name: re_search
+          args: [ '\d',0 ]
+    minimumratio:
+      text: "{% if fields[ 'hr_days' ] %}1{% else %}0{% endif %}"
+    minimumseedtime:
+      text: "{% if fields[ 'hr_days' ] %}{{ (fields[ 'hr_days' ]|int)*86400 }}{% else %}0{% endif %}"
     description:
       selector: font.subtitle
       remove: div

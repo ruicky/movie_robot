@@ -174,7 +174,8 @@ torrents:
       optional: true
       attribute: title
     date_elapsed:
-      selector: td.rowfollow:nth-last-child(7):not(:has(span))
+      selector: tr > td > span[title]
+      attribute: title
       optional: true
     date:
       text: "{% if fields['date_elapsed'] or fields['date_added'] %}{{ fields['date_elapsed'] if fields['date_elapsed'] else fields['date_added'] }}{% else %}now{% endif %}"
@@ -204,5 +205,5 @@ torrents:
           args: [ '(?:限時：\s*)((?:\d+日)?(?:\d+時)?(?:\d+分)?)',1 ]
         - name: date_elapsed_parse
     description:
-      selector: td:nth-child(2) > table > tr > td.embedded
+      selector: table.torrentname > tr > td.embedded
       contents: -1

@@ -1,6 +1,6 @@
-id: btschool
-name: btschool
-domain: https://pt.btschool.club/
+id: hddolby
+name: 高清杜比
+domain: https://www.hddolby.com/
 encoding: UTF-8
 
 login:
@@ -8,20 +8,20 @@ login:
     selector: a[href="logout.php"]
 
 category_mappings:
-  - { id: 405, cate_level1: Movie, cate_level2: "Movies/电影", cate_level2_desc: "Movies/电影" }
-  - { id: 406, cate_level1: TV, cate_level2: "连续剧/TV-Series", cate_level2_desc: "连续剧/TV-Series" }
-  - { id: 407, cate_level1: Anime, cate_level2: "动漫/Animation", cate_level2_desc: "动漫/Animation" }
-  - { id: 408, cate_level1: Documentary, cate_level2: "纪录片/Documentary", cate_level2_desc: "纪录片/Documentary" }
-  - { id: 412, cate_level1: TV, cate_level2: "综艺/TV-Show", cate_level2_desc: "综艺/TV-Show" }
-  - { id: 404, cate_level1: Other, cate_level2: "软件/Software", cate_level2_desc: "软件/Software" }
-  - { id: 402, cate_level1: Other, cate_level2: "资料/Education", cate_level2_desc: "资料/Education" }
-  - { id: 411, cate_level1: Game, cate_level2: "游戏/Game", cate_level2_desc: "游戏/Game" }
-  - { id: 409, cate_level1: Music, cate_level2: "音乐/Music", cate_level2_desc: "音乐/Music" }
-  - { id: 410, cate_level1: TV, cate_level2: "体育/Sports", cate_level2_desc: "体育/Sports" }
-  - { id: 415, cate_level1: Other, cate_level2: "其他/Other", cate_level2_desc: "其他/Other" }
+  - { id: 401, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies/电影" }
+  - { id: 402, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/剧集" }
+  - { id: 404, cate_level1: Documentary, cate_level2: TV/Documentary, cate_level2_desc: "Documentaries/纪录片" }
+  - { id: 405, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "Animations/动漫" }
+  - { id: 403, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Shows/综艺" }
+  - { id: 406, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "MusicVideo/音乐MV" }
+  - { id: 407, cate_level1: TV, cate_level2: TV/Sport, cate_level2_desc: "Sports/运体" }
+  - { id: 408, cate_level1: Music, cate_level2: Audio,cate_level2_ desc: "HQ Audio/无损音乐" }
+  - { id: 410, cate_level1: Game, cate_level2: Other, cate_level2_desc: "Game/游戏" }
+  - { id: 411, cate_level1: Other, cate_level2: Study, cate_level2_desc: "Other/学习" }
+  - { id: 409, cate_level1: Other, cate_level2: Other, cate_level2_desc: "Misc/其他" }
 
 userinfo:
-  path: https://pt.btschool.club/rules.php
+  path: https://www.hddolby.com/index.php
   item:
     selector: table[id="info_block"]
   fields:
@@ -176,10 +176,5 @@ torrents:
         - name: dateparse
           args: "%Y-%m-%d %H:%M:%S"
     description:
-      selector: table.torrentname > tr > td.embedded
+      selector: td:nth-child(2) > table > tr > td.embedded
       contents: -1
-    minimumratio:
-      text: 1
-    minimumseedtime:
-      #做种21小时
-      text: 75600

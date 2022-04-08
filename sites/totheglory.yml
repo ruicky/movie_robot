@@ -51,6 +51,10 @@ userinfo:
       filters:
         - name: re_search
           args: [ '\d+', 0 ]
+    vip_group:
+      case:
+        img[alt="donor"]: true
+        "*": false
     user_group:
       default_value: 'Byte'
       selector: a[href^="/userdetails.php?id="]
@@ -58,39 +62,39 @@ userinfo:
     username:
       default_value: '未知用户名'
       selector: a[href^="/userdetails.php?id="]
-    share_ratio:
+    vip_share_ratio:
+      text: "inf"
+    share_ratio_default:
       default_value: ''
       selectors: font
       index: 3
       filters:
         - name: replace
           args: [ '无限','inf' ]
+    share_ratio:
+      text: "{% if fields['vip_group'] %}{{fields['vip_share_ratio']}}{%else%}{{fields['share_ratio_default']}}{% endif%}"
     uploaded:
       default_value: 0
       selectors: font
-      index: 5
+      index: -7
       filters:
         - name: replace
           args: [ '无限','inf' ]
     downloaded:
       default_value: 0
       selectors: font
-      index: 7
+      index: -5
       filters:
         - name: replace
           args: [ '无限','inf' ]
     seeding:
       default_value: 0
       selectors: font
-      index: 9
+      index: -3
     leeching:
       default_value: 0
       selectors: font
-      index: 10
-    vip_group:
-      case:
-        a[class^="VIP"]: true
-        "*": false
+      index: -2
 search:
   paths:
     - path: browse.php

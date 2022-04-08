@@ -171,4 +171,5 @@ torrents:
           args: "%Y-%m-%d %H:%M:%S"
     description:
       selector: td:nth-child(2) > table > tr > td.embedded
+      remove: div,font
       contents: -1

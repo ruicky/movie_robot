@@ -174,5 +174,6 @@ torrents:
         - name: dateparse
           args: "%Y-%m-%d %H:%M:%S"
     description:
-      selector: td:nth-child(2)
-      remove: a, img
+      selector: table.torrentname > tr > td
+      remove: a, img, span
+      contents: -1

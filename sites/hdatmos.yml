@@ -1,6 +1,6 @@
-id: btschool
-name: btschool
-domain: https://pt.btschool.club/
+id: hdatmos
+name: 阿童木
+domain: https://hdatmos.club/
 encoding: UTF-8
 
 login:
@@ -8,20 +8,23 @@ login:
     selector: a[href="logout.php"]
 
 category_mappings:
-  - { id: 405, cate_level1: Movie, cate_level2: "Movies/电影", cate_level2_desc: "Movies/电影" }
-  - { id: 406, cate_level1: TV, cate_level2: "连续剧/TV-Series", cate_level2_desc: "连续剧/TV-Series" }
-  - { id: 407, cate_level1: Anime, cate_level2: "动漫/Animation", cate_level2_desc: "动漫/Animation" }
-  - { id: 408, cate_level1: Documentary, cate_level2: "纪录片/Documentary", cate_level2_desc: "纪录片/Documentary" }
-  - { id: 412, cate_level1: TV, cate_level2: "综艺/TV-Show", cate_level2_desc: "综艺/TV-Show" }
-  - { id: 404, cate_level1: Other, cate_level2: "软件/Software", cate_level2_desc: "软件/Software" }
-  - { id: 402, cate_level1: Other, cate_level2: "资料/Education", cate_level2_desc: "资料/Education" }
-  - { id: 411, cate_level1: Game, cate_level2: "游戏/Game", cate_level2_desc: "游戏/Game" }
-  - { id: 409, cate_level1: Music, cate_level2: "音乐/Music", cate_level2_desc: "音乐/Music" }
-  - { id: 410, cate_level1: TV, cate_level2: "体育/Sports", cate_level2_desc: "体育/Sports" }
-  - { id: 415, cate_level1: Other, cate_level2: "其他/Other", cate_level2_desc: "其他/Other" }
+  - { id: 401, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies/电影" }
+  - { id: 404, cate_level1: Documentary, cate_level2: TV/Documentary, cate_level2_desc: "Documentaries/纪录片" }
+  - { id: 405, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "Animations/动漫" }
+  - { id: 402, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/剧集" }
+  - { id: 406, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "MusicVideo/MV演唱会" }
+  - { id: 407, cate_level1: TV, cate_level2: TV/Sport, cate_level2_desc: "Sports/体育" }
+  - { id: 408, cate_level1: Music, cate_level2: Audio,cate_level2_ desc: "HQ Audio/音乐" }
+  - { id: 410, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies/洗版区电影"}
+  - { id: 411, cate_level1: Documentary, cate_level2: TV/Documentary, cate_level2_desc: "Documentaries/洗版区纪录片"}
+  - { id: 412, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/洗版区剧集"}
+  - { id: 413, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "Animations/洗版区动漫" }
+  - { id: 414, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "MusicVideo/洗版区MV演唱会" }
+  - { id: 415, cate_level1: TV, cate_level2: TV/Sport, cate_level2_desc: "Sports/洗版区体育" }
+  - { id: 416, cate_level1: Music, cate_level2: Audio,cate_level2_ desc: "HQ Audio/洗版区音乐" }
 
 userinfo:
-  path: https://pt.btschool.club/rules.php
+  path: https://hdatmos.club/index.php
   item:
     selector: table[id="info_block"]
   fields:
@@ -153,22 +156,22 @@ torrents:
       selector: td:nth-child(8)
     downloadvolumefactor:
       case:
-        img.pro_free: 0
-        img.pro_free2up: 0
-        img.pro_50pctdown: 0.5
-        img.pro_50pctdown2up: 0.5
-        img.pro_30pctdown: 0.3
+        font.free: 0
+        font.twoupfree: 0
+        font.halfdown: 0.5
+        font.twouphalfdown: 0.5
+        font.thirtypercent: 0.3
         "*": 1
     uploadvolumefactor:
       case:
-        img.pro_50pctdown2up: 2
-        img.pro_free2up: 2
-        img.pro_2up: 2
+        font.twoup: 2
+        font.twoupfree: 2
+        font.twouphalfdown: 2
         "*": 1
     free_deadline:
       default_value: "{% if fields['downloadvolumefactor']==0 %}{{max_time}}{% endif%}"
       default_value_format: '%Y-%m-%d %H:%M:%S.%f'
-      selector: img.pro_free,img.pro_free2up
+      selector: font.free,font.twoupfree,font.halfdown,font.twouphalfdown
       attribute: onmouseover
       filters:
         - name: re_search
@@ -176,10 +179,5 @@ torrents:
         - name: dateparse
           args: "%Y-%m-%d %H:%M:%S"
     description:
-      selector: table.torrentname > tr > td.embedded
+      selector: td:nth-child(2) > table > tr > td.embedded
       contents: -1
-    minimumratio:
-      text: 1
-    minimumseedtime:
-      #做种21小时
-      text: 75600
