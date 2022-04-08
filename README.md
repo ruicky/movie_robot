@@ -4,14 +4,15 @@ https://registry.hub.docker.com/r/yipengfei/movie-robot/
 # 前端源代码
 https://github.com/pofey/movie-robot-frontend
 
-# 特别说明
+# 声明
+影音是自己的终身需求，为了保持持续更新的热情，所以选择封闭激活使用制度。上班就很忙，晚上回家研发新功能，完善核心功能也是很花时间的（经常要2-3点才睡）。所以想使用，你必须为我付出的业余时间买单，通过捐助获得激活码。
+
 发上一枚可以体验到4月30日的激活码，可以随意传播，邀请自己的朋友来玩，430结束，捐助获得激活码的价格将会提高，是否停止开放永久版也在考虑中。
 seGRdbqgVolN0JveBe5p58fnXNGcw9TbtyFoWoLKqOtkU8JrCZGaa3Bj8OWhD8AVXaqTYYja4RO6f2o32To4cDJhz7n6JV7PakwONqg5fZfTw3YkDMICj85FncwEUjuH
 
 激活码获取方式：
-* 成为认证开发者，持续贡献，获得激活码，以及少量的激活码发放权。
-* 通过打赏作者，可以获得激活码，现在永久买断使用权128元，打赏码在下面，也可以直接访问：https://yee-1254270141.cos.ap-beijing.myqcloud.com/movie_robot/pay.jpg
-* 如果你有其他为项目作出重大贡献的行为，也可以获得激活码。
+* 通过捐助作者，可以获得激活码，现在永久买断使用权128元，打赏码在下面，也可以直接访问：https://yee-1254270141.cos.ap-beijing.myqcloud.com/movie_robot/pay.jpg
+* 机器人现已开放API系统，如果你可以在此基础上构建其他场景应用，凡被采纳，均可获得激活码。
 
 官方telgram免费大群：[加入智能影音机器人交流群](https://t.me/+shOuvzcee9I4ZDll)
 
@@ -28,11 +29,17 @@ WebUI功能预览
 
 针对新增下载和存量硬盘的影视库，机器人还可以帮你对乱七八糟下载种子名做标准化整理，整理后会按电影名+年份+tmdbid的方式存储，可以使用硬链接或复制模式的整理方式。
 # 当前支持的站点
-## 馒头、彩虹岛、天空、TTG、SSD、朋友、北洋园、柠檬、我堡、猫站、葡萄、hdchina、hdfans、pthome、btschool、pttime
+## 馒头、彩虹岛、天空、TTG、SSD、朋友、北洋园、柠檬、我堡、猫站、葡萄等几乎所有主流站点
 
 # 更新日志
 ## 如何保持机器人是最新版本
 Docker应用升级指南：https://feather-purple-bdd.notion.site/docker-09e1db16b2b14040840bd2f5660e666c
+
+2022.04.09
+Beta标签最新版本号1.3
+1. 优化豆瓣的使用形式，避免被豆瓣识别为爬虫；
+2. 建立自有订阅机制，先在微信搜索中开放订阅能力，下周出WEB页面；
+3. 修复几十个智能下载和识别有关的BUG，不一一列举。
 
 2022.04.05
 1. 新增养站功能，自动进行流量管理，不管你有多少PT站，全部交给机器人打理，自动帮你下载最热门的free种子挂上传；忘了PT站，好好看电影吧。详细功能介绍：https://feather-purple-bdd.notion.site/854f2ab70f394358b00b0ff9e2c1690a
