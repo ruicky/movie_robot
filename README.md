@@ -16,9 +16,8 @@ seGRdbqgVolN0JveBe5p58fnXNGcw9TbtyFoWoLKqOtkU8JrCZGaa3Bj8OWhD8AVXaqTYYja4RO6f2o3
 
 官方telgram免费大群：[加入智能影音机器人交流群](https://t.me/+shOuvzcee9I4ZDll)
 # 产品大图
-0417更新
 <img src="https://raw.githubusercontent.com/pofey/movie_robot/main/doc/Movie Robot.jpg"/>
-
+0417更新
 # 功能
 ## WebUI功能预览
 ### PC端：
