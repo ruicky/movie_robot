@@ -48,7 +48,7 @@ Latest代码已经合为最新，Beta版本号重置为: Beta 0.0.1
 1. 新增下载记录数据分析页面，右上角有个小按钮，可以进入；
 2. 新增站点管理部分数据可视化分析能力，可以更直观的观察今日、近7日流量变化；
 3. 新增多用户体系，可以创建多个账号，分享给朋友用啦；
-4. 开放接口，支持overseerr、jellyseerr对接Movie Robot，实现更智能的中文资源发现及整理；
+4. 开放接口，支持overseerr、jellyseerr对接Movie Robot，帮助其实现更智能的中文资源发现及整理；
 5. 修复若干BUG，不列举。前端资源整体迁移到docker镜像的/app/frontend 目录，大神可以自己修改前端，进行定制化；
 6. 所有的MR接口API，都在/app/frontend/permission.json 中，web端口也开放了部分 swagger 接口描述，访问地址/apidocs，欢迎高级玩法及定制化开发；
 
