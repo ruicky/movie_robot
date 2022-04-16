@@ -5,7 +5,7 @@ https://registry.hub.docker.com/r/yipengfei/movie-robot/
 https://github.com/pofey/movie-robot-frontend
 
 # 声明
-影音是自己的终身需求，为了保持持续更新的热情，所以选择封闭激活使用制度。上班就很忙，晚上回家研发新功能，完善核心功能也是很花时间的（经常要2-3点才睡）。所以想使用，你必须为我付出的业余时间买单，通过捐助获得激活码。
+影音是自己的终身需求，为了保持持续更新的热情，所以选择封闭激活使用制度。上班就很忙，晚上回家业余时间研发新功能，很花时间的。所以想使用，你必须为我付出的业余时间买单，通过捐助获得激活码。
 
 发上一枚可以体验到4月30日的激活码，可以随意传播，邀请自己的朋友来玩，430结束，捐助获得激活码的价格将会提高，是否停止开放永久版也在考虑中。
 seGRdbqgVolN0JveBe5p58fnXNGcw9TbtyFoWoLKqOtkU8JrCZGaa3Bj8OWhD8AVXaqTYYja4RO6f2o32To4cDJhz7n6JV7PakwONqg5fZfTw3YkDMICj85FncwEUjuH
@@ -17,8 +17,12 @@ seGRdbqgVolN0JveBe5p58fnXNGcw9TbtyFoWoLKqOtkU8JrCZGaa3Bj8OWhD8AVXaqTYYja4RO6f2o3
 官方telgram免费大群：[加入智能影音机器人交流群](https://t.me/+shOuvzcee9I4ZDll)
 
 # 功能
-WebUI功能预览
+## WebUI功能预览
+### PC端：
+<img src="https://raw.githubusercontent.com/pofey/movie_robot/main/doc/images/download_dashboard.jpg" width="940" height="615"/>
+<img src="https://raw.githubusercontent.com/pofey/movie_robot/main/doc/images/site_dashboard.jpg" width="940" height="615"/>
 
+### 移动端：
 <img src="https://raw.githubusercontent.com/pofey/movie_robot/main/doc/images/webui-search.jpg" width="300" height="650"/><img src="https://raw.githubusercontent.com/pofey/movie_robot/main/doc/images/webui-downloading-dark.jpg" width="300" height="650"/><img src="https://raw.githubusercontent.com/pofey/movie_robot/main/doc/images/search-ww.jpg" width="300" height="650"/><img src="https://raw.githubusercontent.com/pofey/movie_robot/main/doc/images/webui-downloading.jpg" width="300" height="650"/>
 
 定时自动从豆瓣电影的想看、在看、看过中获取影音信息，然后去PT站（支持多家站点）自动检索种子，找到最佳资源后按豆瓣电影分类提交到BT下载工具下载。在下载前，会自动检查你的Emby中是否已经存在。
@@ -29,11 +33,20 @@ WebUI功能预览
 
 针对新增下载和存量硬盘的影视库，机器人还可以帮你对乱七八糟下载种子名做标准化整理，整理后会按电影名+年份+tmdbid的方式存储，可以使用硬链接或复制模式的整理方式。
 # 当前支持的站点
-## 馒头、彩虹岛、天空、TTG、SSD、朋友、北洋园、柠檬、我堡、猫站、葡萄等几乎所有主流站点
+几乎所有主流国内PT站点
 
 # 更新日志
 ## 如何保持机器人是最新版本
 Docker应用升级指南：https://feather-purple-bdd.notion.site/docker-09e1db16b2b14040840bd2f5660e666c
+
+2022.04.16
+Latest代码已经合为最新，Beta版本号重置为: Beta 0.0.1
+1. 新增下载记录数据分析页面，右上角有个小按钮，可以进入；
+2. 新增站点管理部分数据可视化分析能力，可以更直观的观察今日、近7日流量变化；
+3. 新增多用户体系，可以创建多个账号，分享给朋友用啦；
+4. 开放接口，支持overseerr、jellyseerr对接Movie Robot，实现更智能的中文资源发现及整理；
+5. 修复若干BUG，不列举。前端资源整体迁移到docker镜像的/app/frontend 目录，大神可以自己修改前端，进行定制化；
+6. 所有的MR接口API，都在/app/frontend/permission.json 中，web端口也开放了部分 swagger 接口描述，访问地址/apidocs，欢迎高级玩法及定制化开发；
 
 2022.04.09
 Beta标签最新版本号1.3
