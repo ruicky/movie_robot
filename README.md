@@ -43,6 +43,12 @@ seGRdbqgVolN0JveBe5p58fnXNGcw9TbtyFoWoLKqOtkU8JrCZGaa3Bj8OWhD8AVXaqTYYja4RO6f2o3
 ## 如何保持机器人是最新版本
 Docker应用升级指南：https://feather-purple-bdd.notion.site/docker-09e1db16b2b14040840bd2f5660e666c
 
+2022.04.18
+3个docker标签同步发布新版本0.2.4
+1. TMDB、FanArt访问可以设置独立的HTTP、SOCKS代理；
+2. 每个PT站点，可以独立设置HTTP、SOCKS代理，这个代理只作用于站点分享数据读取、搜索、以及下载种子，真正的种子下载，肯定不会走代理；
+3. 修复一个养站速率判断失效的BUG；
+
 2022.04.17
 Beta 0.0.4 更新说明
 1. 优化智能下载时PT站搜索功能，引入较为高级的重试机制，可以有效保障智能下载时，尽量搜到最好的资源，而不是搜到哪个下哪个。如果一个站点因网络、或访问量过大、站点被攻击临时挂掉，智能下载时将在15分钟内以合理的频率不断重试直到搜回结果；
