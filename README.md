@@ -2,7 +2,7 @@
 [Movie Robot WIki](https://yee329.notion.site/Movie-Robot-Wiki-9abef8c648c840fca47a0bf308957f85)
 * [使用Movie Robot前检查清单](https://yee329.notion.site/d8479e45ecbd4ed487726f86ddcfc3fd)
 * [开发计划](https://yee329.notion.site/7015972108424f14a1f2e15bde5205b4?v=6a041b4a727c48588134db8538e2b164)
-* [更新日志](https://www.notion.so/yee329/231dce04132642359e4a979e6b544ffd)
+* [更新日志](https://yee329.notion.site/231dce04132642359e4a979e6b544ffd)
 * 更多文档持续更新中......
 
 **欢迎到WIKI中心（正在编写中），查看产品的发展动态。这套WIKI我会慢慢补充内容，后续会包含完整的开发计划、产品介绍、新手指南、进阶玩法、常见问题答疑等几个板块内容，欢迎大家收藏！**
