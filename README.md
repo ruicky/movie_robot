@@ -1,4 +1,5 @@
 # Movie Robot 产品手册
+Telegram Channel: https://t.me/aimovierobot
 [Movie Robot WIki](https://yee329.notion.site/Movie-Robot-Wiki-9abef8c648c840fca47a0bf308957f85)
 * [使用Movie Robot前检查清单](https://yee329.notion.site/d8479e45ecbd4ed487726f86ddcfc3fd)
 * [开发计划](https://yee329.notion.site/7015972108424f14a1f2e15bde5205b4?v=6a041b4a727c48588134db8538e2b164)
