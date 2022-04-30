@@ -1,5 +1,5 @@
 # Movie Robot 产品手册
-Telegram Channel: https://t.me/aimovierobot
+Telegram Channel: https://t.me/aimovierobot 关注Channel，定期发放短期体验码。
 
 [Movie Robot WIki](https://yee329.notion.site/Movie-Robot-Wiki-9abef8c648c840fca47a0bf308957f85)
 * [使用Movie Robot前检查清单](https://yee329.notion.site/d8479e45ecbd4ed487726f86ddcfc3fd)
@@ -31,6 +31,7 @@ Telegram Channel: https://t.me/aimovierobot
 * 前端代码开源，你可以通过持续的项目贡献（bug修复、代码重构、新功能、交互体验优化等有效PR）获得持续的使用时间。
 * PT站点管理组成员或其他核心成员凭身份标识，也可以领取激活码。
 **通过捐助作者，肯定作者的开发时间付出，可以获得激活码 [点击查看微信打赏码](https://yee-1254270141.cos.ap-beijing.myqcloud.com/movie_robot/pay.jpg) 打赏后加作者微信，未打赏不通过 yipengfei329 来获得激活码以及交流群。当然你也可以直接截图打赏记录，发送邮件到：yipengfei329@gmail.com**
+
 **永久买断是指，只要我还在用在维护，你永远享受免费更新的权利。假设因我个人或其他不可抗力原因无法继续维护程序，你将获得程序全部源代码或我选择开源到社区，由社区继续维护保证你持续可用。无论如何你不会损失使用权。当然你也可以赌我早点停止维护开源社区然后白嫖:)😂**
 
 发上一枚可以体验到4月30日的激活码，可以随意传播，邀请自己的朋友来玩。
