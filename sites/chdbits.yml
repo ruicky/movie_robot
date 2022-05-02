@@ -169,9 +169,13 @@ torrents:
         - name: re_search
           args: [ '\d',0 ]
     minimumratio:
-      text: "{% if fields[ 'hr_days' ] %}1{% else %}0{% endif %}"
+      text: "{% if fields[ 'hr_days' ] %}999999{% else %}0{% endif %}"
     minimumseedtime:
       text: "{% if fields[ 'hr_days' ] %}{{ (fields[ 'hr_days' ]|int)*86400 }}{% else %}0{% endif %}"
-    description:
+    tags:
+      selector: font.subtitle > div
+    subject:
       selector: font.subtitle
       remove: div
+    description:
+      text: "{% if fields['tags']%}{{ fields['subject']+' '+fields['tags'] }}{% else %}{{ fields['subject'] }}{% endif %}"

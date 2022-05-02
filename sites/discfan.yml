@@ -1,29 +1,29 @@
-id: pthome
-name: 铂金家
-domain: https://pthome.net/
+id: discfan
+name: 蝶粉
+domain: https://discfan.net/
 encoding: UTF-8
 
 login:
   test:
-    selector: a[href="logout.php"]
+    selector: a[href="mybonus.php"]
 
 category_mappings:
-  - { id: 401, cate_level1: Movie, cate_level2: "电影", cate_level2_desc: "电影" }
-  - { id: 404, cate_level1: Documentary, cate_level2: "纪录片", cate_level2_desc: "纪录片" }
-  - { id: 405, cate_level1: Anime, cate_level2: "动漫", cate_level2_desc: "动漫" }
-  - { id: 402, cate_level1: TV, cate_level2: "电视剧", cate_level2_desc: "电视剧" }
-  - { id: 403, cate_level1: TV, cate_level2: "综艺", cate_level2_desc: "综艺" }
-  - { id: 407, cate_level1: TV, cate_level2: "体育", cate_level2_desc: "体育" }
-  - { id: 408, cate_level1: Music, cate_level2: "音乐", cate_level2_desc: "音乐" }
-  - { id: 410, cate_level1: Music, cate_level2: "游戏", cate_level2_desc: "游戏" }
-  - { id: 411, cate_level1: Other, cate_level2: "软件", cate_level2_desc: "软件" }
-  - { id: 412, cate_level1: Other, cate_level2: "学习", cate_level2_desc: "学习" }
-  - { id: 409, cate_level1: Other, cate_level2: "其他", cate_level2_desc: "其他" }
-  - { id: 507, cate_level1: Music, cate_level2: "有声书", cate_level2_desc: "有声书" }
-  - { id: 508, cate_level1: Other, cate_level2: "电子书", cate_level2_desc: "电子书" }
+  - { id: 401, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies/中国大陆" }
+  - { id: 404, cate_level1: Documentary, cate_level2: TV/Documentary, cate_level2_desc: "Documentaries/中国香港特别行政区" }
+  - { id: 405, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "Animations/中国台湾省" }
+  - { id: 402, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/泰国" }
+  - { id: 403, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Shows/日本" }
+  - { id: 406, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "MusicVideo/韩国" }
+  - { id: 410, cate_level1: Other, cate_level2: Other, cate_level2_desc: "Other/世界" }
+  - { id: 411, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/剧集" }
+  - { id: 414, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "MusicVideo/音乐" }
+  - { id: 413, cate_level1: Documentary, cate_level2: TV/Documentary, cate_level2_desc: "Documentaries/记录" }
+  - { id: 416, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Shows/综艺" }
+  - { id: 417, cate_level1: TV, cate_level2: TV/Sport, cate_level2_desc: "Sports/体育" }
+  - { id: 419, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "Animations/动漫" }
 
 userinfo:
-  path: https://pthome.net/rules.php
+  path: https://discfan.net/index.php
   item:
     selector: table[id="info_block"]
   fields:
@@ -103,12 +103,6 @@ torrents:
       filters:
         - name: re_search
           args: [ '\d+', 0 ]
-    category:
-      selector: a[href^="?cat="]
-      attribute: href
-      filters:
-        - name: querystring
-          args: cat
     title_default:
       selector: a[href^="details.php?id="]
     title_optional:
@@ -117,27 +111,33 @@ torrents:
       attribute: title
     title:
       text: "{% if fields['title_optional'] %}{{ fields['title_optional'] }}{% else %}{{ fields['title_default'] }}{% endif %}"
+    category:
+      selector: a[href^="?cat="]
+      attribute: href
+      filters:
+        - name: replace
+          args: [ "?", "" ]
+        - name: querystring
+          args: cat
     details:
       selector: a[href^="details.php?id="]
       attribute: href
     download:
       selector: a[href^="download.php?id="]
       attribute: href
-    size:
-      selector: td:nth-child(5)
-    grabs:
-      selector: td:nth-child(8)
-    seeders:
-      selector: td:nth-child(6)
-    leechers:
-      selector: td:nth-child(7)
+    imdbid:
+      selector: div.imdb_100 > a
+      attribute: href
+      filters:
+        - name: re_search
+          args: [ 'tt\d+',0 ]
     date_elapsed:
-      # time type: time elapsed (default)
+      # 站点设置，已去时间 (默认)
       selector: td:nth-child(4) > span[title]
       attribute: title
       optional: true
     date_added:
-      # time added
+      # 站点设置，实际时间
       selector: td:nth-child(4):not(:has(span))
       optional: true
     date:
@@ -145,6 +145,14 @@ torrents:
       filters:
         - name: dateparse
           args: "%Y-%m-%d %H:%M:%S"
+    size:
+      selector: td:nth-child(5)
+    seeders:
+      selector: td:nth-child(6)
+    leechers:
+      selector: td:nth-child(7)
+    grabs:
+      selector: td:nth-child(8)
     downloadvolumefactor:
       case:
         img.pro_free: 0
@@ -162,11 +170,13 @@ torrents:
     free_deadline:
       default_value: "{% if fields['downloadvolumefactor']==0 %}{{max_time}}{% endif%}"
       default_value_format: '%Y-%m-%d %H:%M:%S.%f'
-      selector: 'td[class="embedded"] > b > span[title]'
-      attribute: title
+      selector: img.pro_free,img.pro_free2up
+      attribute: onmouseover
       filters:
+        - name: re_search
+          args: [ '\d+-\d+-\d+ \d+:\d+:\d+', 0 ]
         - name: dateparse
           args: "%Y-%m-%d %H:%M:%S"
     description:
-      selectors: table.torrentname > tr > td.embedded > span
-      index: -1
+      selector: td:nth-child(2) > table > tr > td.embedded
+      contents: -1

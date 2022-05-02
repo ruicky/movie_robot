@@ -1,5 +1,5 @@
 id: ssd
-name: SSD
+name: 不可说
 domain: https://springsunday.net/
 encoding: UTF-8
 
@@ -175,5 +175,5 @@ torrents:
           args: "%Y-%m-%d %H:%M:%S"
     description:
       selector: table.torrentname > tr > td
-      remove: a, img, span
+      remove: a, b, img, span
       contents: -1

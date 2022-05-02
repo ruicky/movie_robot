@@ -178,3 +178,11 @@ torrents:
     description:
       selector: td:nth-child(2) > table > tr > td.embedded
       contents: -1
+    minimumratio:
+      case:
+        img.hitandrun: 1
+        "*": 0
+    minimumseedtime:
+      case:
+        img.hitandrun: 86400
+        "*": 0
