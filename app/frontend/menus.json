@@ -1,0 +1,103 @@
+[
+  {
+    "title": "影音",
+    "pages": [
+      {
+        "href": "/subscribe/rankingList",
+        "icon": "MovieFilter",
+        "title": "影片推荐"
+      },
+      {
+        "href": "/movie/search",
+        "icon": "Search",
+        "title": "搜索资源"
+      },
+      {
+        "href": "/download/record",
+        "icon": "Download",
+        "title": "下载记录"
+      }
+    ]
+  },
+  {
+    "title": "智能下载",
+    "pages": [
+      {
+        "href": "/subscribe/list",
+        "icon": "Subscriptions",
+        "title": "我的订阅"
+      },
+      {
+        "href": "/smartDownload",
+        "icon": "Bookmark",
+        "title": "智能下载",
+        "children": [
+          {
+            "href": "/smartDownload/douban",
+            "title": "豆瓣想看"
+          },{
+            "href": "/smartDownload/selectors",
+            "title": "选种设置"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "设置",
+    "pages": [
+      {
+        "href": "/site/dashboard",
+        "icon": "Star",
+        "title": "站点管理"
+      },
+      {
+        "href": "/user/index",
+        "icon": "Users",
+        "title": "用户管理"
+      },
+      {
+        "href": "/config",
+        "icon": "Settings",
+        "title": "基础设置",
+        "children": [
+          {
+            "href": "/config/web",
+            "title": "访问设置"
+          },
+          {
+            "href": "/config/media-server",
+            "title": "媒体服务器"
+          },
+          {
+            "href": "/config/download-client",
+            "title": "下载工具"
+          },
+          {
+            "href": "/config/media-path",
+            "title": "存储路径"
+          },
+          {
+            "href": "/config/movie-metadata",
+            "title": "影音识别"
+          }
+        ]
+      },
+      {
+        "href": "/config",
+        "icon": "Tune",
+        "title": "进阶设置",
+        "children": [
+          {
+            "href": "/config/notify",
+            "title": "推送通知"
+          },
+          {
+            "href": "/config/free-download",
+            "title": "流量管理"
+          }
+        ]
+      }
+    ]
+  }
+]

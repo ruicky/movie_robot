@@ -1,4 +1,6 @@
 {
+  "rule_name": "collection",
+  "desc": "收藏品质资源优先",
   "weights": {
     "name_score": 0.3,
     "type_score": 0.45,

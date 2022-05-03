@@ -1,4 +1,6 @@
 {
+  "rule_name": "compress",
+  "desc": "高压缩小尺寸资源优先",
   "weights": {
     "name_score": 0.3,
     "type_score": 0.4,
@@ -90,6 +92,10 @@
     {
       "pattern": "Blu-?ray.*(HEVC|AVC)",
       "score": 0
+    },
+    {
+      "pattern": "MiniBD",
+      "score": -100
     }
   ]
 }

@@ -1,6 +1,6 @@
 version: 1
 root:
-  level: DEBUG
+  level: INFO
   handlers: [ file,console ]
 loggers:
   apscheduler:
@@ -12,11 +12,12 @@ handlers:
     level: INFO
     formatter: console_formatters
   file:
-    class: logging.handlers.RotatingFileHandler
+    class: logging.handlers.TimedRotatingFileHandler
     formatter: file_formatters
-    filename: ${workdir}/logs/commandapp.log
+    filename: ${workdir}/logs/robot.log
     level: DEBUG
-
+    when: 'midnight'
+    interval: 1
 formatters:
   console_formatters:
     format: '%(asctime)s - %(threadName)s - %(levelname)s: %(message)s'

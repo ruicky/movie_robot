@@ -1,5 +1,11 @@
 CCTV1
+CCTV2
+CCTV3
+CCTV4
+CCTV5
 CCTV6
+CCTV7
+CCTV8
 HBO
 影迷修复版
 衍生节目
@@ -31,5 +37,12 @@ XKsub
 KissSub
 Comicat
 Uncut
-原盤首發
-活動置頂
+DFTV
+BTV
+HNTV
+BRTV
+Complete
+SP
+GDTV
+ViuTV
+JSTV
