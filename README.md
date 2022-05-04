@@ -32,6 +32,8 @@ Telegram Channel: https://t.me/aimovierobot 关注Channel，定期发放短期�
 
 **永久买断是指，只要我还在用在维护，你永远享受免费更新的权利。假设因我个人或其他不可抗力原因无法继续维护程序，你将获得程序全部源代码或我选择开源到社区，由社区继续维护保证你持续可用。无论如何你不会损失使用权。当然你也可以赌我早点停止维护开源社区然后白嫖:)😂**
 
+**通过捐助作者，为作者的开发以及后续持续更新所付出的时间买单来获得使用权。[点击查看支付宝付款码](https://yee-1254270141.cos.ap-beijing.myqcloud.com/movie_robot/alipay.jpg) 支付后请备注邮箱接收激活码**
+
 # Docker官方镜像
 https://registry.hub.docker.com/r/yipengfei/movie-robot/
 
