@@ -4,7 +4,8 @@ Telegram Channel: https://t.me/aimovierobot 关注Channel，定期发放短期�
 [Movie Robot WIki](https://yee329.notion.site/Movie-Robot-Wiki-9abef8c648c840fca47a0bf308957f85)
 * [开发计划](https://yee329.notion.site/7015972108424f14a1f2e15bde5205b4?v=6a041b4a727c48588134db8538e2b164)
 * [更新日志](https://yee329.notion.site/231dce04132642359e4a979e6b544ffd)
-新人指南系列
+
+**新人指南系列**
 * 1.[检查清单](https://www.notion.so/yee329/1-d8479e45ecbd4ed487726f86ddcfc3fd)
 * 2.[Docker应用启动与升级](https://yee329.notion.site/2-Docker-09e1db16b2b14040840bd2f5660e666c)
 * 3.[通过网页完成首次初始化](https://yee329.notion.site/3-42680818afd84891b254bfa456f3dd3e)
