@@ -2,12 +2,18 @@
 Telegram Channel: https://t.me/aimovierobot 关注Channel，定期发放短期体验码。
 
 [Movie Robot WIki](https://yee329.notion.site/Movie-Robot-Wiki-9abef8c648c840fca47a0bf308957f85)
-* [使用Movie Robot前检查清单](https://yee329.notion.site/d8479e45ecbd4ed487726f86ddcfc3fd)
 * [开发计划](https://yee329.notion.site/7015972108424f14a1f2e15bde5205b4?v=6a041b4a727c48588134db8538e2b164)
 * [更新日志](https://yee329.notion.site/231dce04132642359e4a979e6b544ffd)
-* 更多文档持续更新中......
+新人指南系列
+* 1.[检查清单](https://www.notion.so/yee329/1-d8479e45ecbd4ed487726f86ddcfc3fd)
+* 2.[Docker应用启动与升级](https://yee329.notion.site/2-Docker-09e1db16b2b14040840bd2f5660e666c)
+* 3.[通过网页完成首次初始化](https://yee329.notion.site/3-42680818afd84891b254bfa456f3dd3e)
+* 4.[资源站点设置与养护](https://yee329.notion.site/4-28702cf23a834c2380eb8ff34de68ea5)
+* 5.[设置智能下载开启全自动观影](https://yee329.notion.site/5-745da2776daa4fc7b5e2ddb3170aa11a)
+* 6.[使用微信接收通知&搜索订阅](https://yee329.notion.site/45883b2da80c4d7b87c979ad77097a95)
+* 7.[玩转过滤器与排序规则](https://yee329.notion.site/12f6d44243194c8c96a7e000b9dde023)
 
-**欢迎到WIKI中心（正在编写中），查看产品的发展动态。这套WIKI我会慢慢补充内容，后续会包含完整的开发计划、产品介绍、新手指南、进阶玩法、常见问题答疑等几个板块内容，欢迎大家收藏！**
+**欢迎收藏Wiki，查看发展动态。**
 
 产品大图
 <img alt="产品大图" src="https://raw.githubusercontent.com/pofey/movie_robot/main/doc/Movie Robot.jpg"/>
