@@ -14,7 +14,7 @@ Telegram Channel: https://t.me/aimovierobot 关注Channel，定期发放短期�
 * 6.[使用微信接收通知&搜索订阅](https://yee329.notion.site/45883b2da80c4d7b87c979ad77097a95)
 * 7.[玩转过滤器与排序规则](https://yee329.notion.site/12f6d44243194c8c96a7e000b9dde023)
 
-**欢迎收藏Wiki，查看发展动态。**
+**欢迎收藏Wiki，查看发展动态。如果看了WIKI新手指南还搞不定，建议放弃，私有化工具有门槛，没必要折磨自己。**
 
 产品大图
 <img alt="产品大图" src="https://raw.githubusercontent.com/pofey/movie_robot/main/doc/Movie Robot.jpg"/>
