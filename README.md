@@ -19,7 +19,7 @@ Telegram Channel: https://t.me/aimovierobot 作者会及时把产品的更新日
 # 产品大图
 <img alt="产品大图" src="https://raw.githubusercontent.com/pofey/movie_robot/main/doc/Movie Robot.jpg"/>
 
-** 免责声明：本产品不提供任何影片资源，不与任何内容提供方有直接合作，所有内容均来自安装者自己配置的内容站点。配置后，本产品会利用爬虫技术以合法合理的频次，访问内容站点拉取资源。 **
+**免责声明：本产品不提供任何影片资源，不与任何内容提供方有直接合作，所有内容均来自安装者自己配置的内容站点。配置后，本产品会利用爬虫技术以合法合理的频次，访问内容站点拉取资源。**
 
 ## Movie Robot是什么？
 * “聪明”的自动化调度工具
