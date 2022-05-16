@@ -16,8 +16,9 @@ Telegram Channel: https://t.me/aimovierobot 作者会及时把产品的更新日
 
 完整WIKI地址：https://yee329.notion.site/Movie-Robot-Wiki-9abef8c648c840fca47a0bf308957f85
 
-产品大图
+# 产品大图
 <img alt="产品大图" src="https://raw.githubusercontent.com/pofey/movie_robot/main/doc/Movie Robot.jpg"/>
+
 ** 免责声明：本产品不提供任何影片资源，不与任何内容提供方有直接合作，所有内容均来自安装者自己配置的内容站点。配置后，本产品会利用爬虫技术以合法合理的频次，访问内容站点拉取资源。 **
 
 ## Movie Robot是什么？
