@@ -135,7 +135,7 @@ torrents:
           args: [ 'tt\d+',0 ]
     date_elapsed:
       # 站点设置，已去时间 (默认)
-      selector: td:nth-child(4) > span[title]
+      selector: td:nth-child(4) > time[title]
       attribute: title
       optional: true
     date_added:
