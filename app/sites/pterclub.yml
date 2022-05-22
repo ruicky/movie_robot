@@ -171,6 +171,10 @@ torrents:
       filters:
         - name: dateparse
           args: "%Y-%m-%d %H:%M:%S"
-    description:
+    tags:
+      selectors: div > a.torrents-tag
+    subject:
       selector: td.embedded:nth-child(2) > div > div[style] > span
       contents: -1
+    description:
+      text: "{% if fields['tags']%}{{ fields['subject']+' '+fields['tags']|join(' ') }}{% else %}{{ fields['subject'] }}{% endif %}"
