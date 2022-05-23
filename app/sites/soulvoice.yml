@@ -177,3 +177,11 @@ torrents:
     description:
       selector: td:nth-child(2) > table > tr > td.embedded
       contents: -1
+    minimumratio:
+      case:
+        img[title="H&R"]: 2
+        "*": 0
+    minimumseedtime:
+      case:
+        img[title="H&R"]: 259200
+        "*": 0
