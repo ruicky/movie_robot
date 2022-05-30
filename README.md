@@ -39,6 +39,8 @@ Telegram Channel: https://t.me/aimovierobot 作者会及时把产品的更新日
 # 使用须知
 **激活码获取方式：通过捐助作者168元为作者的开发以及后续持续更新所付出的时间买单来获得软件永久使用及更新的权利。[点击查看支付宝付款码](https://yee-1254270141.cos.ap-beijing.myqcloud.com/movie_robot/alipay.jpg) 支付后请备注邮箱接收激活码**
 
+找到一个你认识的永久用户朋友，也可以帮你开通1个月免费体验
+
 # Docker官方镜像
 https://registry.hub.docker.com/r/yipengfei/movie-robot/
 
