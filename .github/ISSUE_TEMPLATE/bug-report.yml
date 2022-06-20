@@ -11,7 +11,7 @@ body:
     id: version
     attributes:
       label: 当前程序版本
-      description: 遇到问题时程序所在的版本好
+      description: 遇到问题时程序所在的版本号
     validations:
       required: true
   - type: textarea
@@ -36,7 +36,7 @@ body:
       label: 发生问题时系统日志
       description: 问题出现时，程序运行日志请复制到这里。
       render: shell
-  - type: textarea
+  - type: markdown
     id: otherinfo
     attributes:
       label: 其他信息
