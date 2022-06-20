@@ -1,62 +1,50 @@
-name: Bug Report
-description: File a bug report
-title: "[Bug]: "
-labels: ["bug", "triage"]
-assignees:
-  - octocat
+name: 缺陷反馈
+description: 反馈一个我遇到的程序使用问题
+title: "[缺陷]: "
+labels: ["缺陷"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this bug report!
+        问题反馈需要在清晰描述自己问题的同时，给出你认为可能与问题有关的信息线索来帮助你解决问题。只提问题，不给出线索，是无法分析定位原因的。
   - type: input
-    id: contact
+    id: version
     attributes:
-      label: Contact Details
-      description: How can we get in touch with you if we need more info?
-      placeholder: ex. email@example.com
+      label: 当前程序版本
+      description: 遇到问题时程序所在的版本好
+      placeholder: ""
     validations:
-      required: false
+      required: true
   - type: textarea
     id: what-happened
     attributes:
-      label: What happened?
-      description: Also tell us, what did you expect to happen?
-      placeholder: Tell us what you see!
-      value: "A bug happened!"
+      label: 问题描述
+      description: 你遇到了什么问题，请清晰描述。
+      placeholder: ""
+      value: ""
     validations:
       required: true
-  - type: dropdown
-    id: version
+  - type: textarea
+    id: step
     attributes:
-      label: Version
-      description: What version of our software are you running?
-      options:
-        - 1.0.2 (Default)
-        - 1.0.3 (Edge)
+      label: 重现步骤
+      description: 通过什么样的操作方式，可以发生这个问题，相同操作步骤你是否还会遇到问题？
+      placeholder: "1. 把冰箱门打开，我看到冰箱里没什么食物（拍照）空间还很足。2. 把大象装进去（我没切碎准备直接塞进去）。大象太大，装不进去了"
+      value: ""
     validations:
       required: true
-  - type: dropdown
-    id: browsers
-    attributes:
-      label: What browsers are you seeing the problem on?
-      multiple: true
-      options:
-        - Firefox
-        - Chrome
-        - Safari
-        - Microsoft Edge
   - type: textarea
     id: logs
     attributes:
-      label: Relevant log output
-      description: Please copy and paste any relevant log output. 这将自动格式化为代码，因此无需背板。
+      label: 发生问题时系统日志
+      description: 问题出现时，程序运行日志请复制到这里。
       render: shell
-  - type: checkboxes
-    id: terms
+  - type: textarea
+    id: otherinfo
     attributes:
-      label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com)
-      options:
-        - label: I agree to follow this project's Code of Conduct
-          required: true
+      label: 其他信息
+      description: 如果你还能找到其他信息可以帮助问题排查，请尽可能多补充。
+      placeholder: ""
+      value: ""
+    validations:
+      required: false
