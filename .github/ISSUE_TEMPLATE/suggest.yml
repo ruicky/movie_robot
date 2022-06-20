@@ -32,8 +32,8 @@ body:
         - 非常高
         - 一般
         - 不着急
-      validations:
-        required: true
+    validations:
+      required: true
   - type: dropdown
     id: scope
     attributes:
