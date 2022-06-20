@@ -32,9 +32,9 @@ body:
         - 非常高
         - 一般
         - 不着急
-     validations:
-      required: true
-   - type: dropdown
+      validations:
+        required: true
+  - type: dropdown
     id: scope
     attributes:
       label: 受众范围
@@ -44,5 +44,5 @@ body:
         - 一般
         - 比较小众
         - 不确定
-     validations:
+    validations:
       required: true
