@@ -1,0 +1,25 @@
+name: 问题请教
+description: 有些程序逻辑和问题不是特别确定，想要咨询一下
+title: "[提问]: "
+labels: ["提问"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        提问之前，可以先去WIKI（https://yee329.notion.site/Movie-Robot-Wiki-9abef8c648c840fca47a0bf308957f85）里找找答案，如果没有，再来提问
+  - type: input
+    id: version
+    attributes:
+      label: 当前程序版本
+      description: 遇到问题时程序所在的版本号
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: 问题
+      description: 你想了解什么细节，或者遇到了什么问题，可以清晰的描述出来，有描述有思考，最好不要只有一句话。
+      placeholder: "问题描述"
+    validations:
+      required: true
+    id: scope
