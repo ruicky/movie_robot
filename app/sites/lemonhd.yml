@@ -8,22 +8,15 @@ login:
     selector: a[href="logout.php"]
 
 category_mappings:
-  - { id: animate, cate_level1: Anime, cate_level2: TV/Anime, cate_level2_desc: "动漫 Anime" }
-  - { id: doc, cate_level1: Documentary, cate_level2: TV/Documentary, cate_level2_desc: "纪录片 Documentary" }
-  - { id: movie, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "电影 Movie" }
-  - { id: mv, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "MV Music Video" }
-  - { id: music, cate_level1: Music, cate_level2: Audio, cate_level2_desc: "音乐 Music" }
-  - { id: tv, cate_level1: TV, cate_level2: TV, cate_level2_desc: "剧集综艺 TV" }
-  - { id: other, cate_level1: Other, cate_level2: Other, cate_level2_desc: "艺术 Other" }
-# 搜索时id映射
-category_id_mapping:
-  - { id: movie, mapping: 401 }
-  - { id: tv, mapping: [ 402,403 ] }
-  - { id: doc, mapping: [ 404 ] }
-  - { id: animate, mapping: 405 }
-  - { id: mv, mapping: 406 }
-  - { id: music, mapping: [ 408,500 ] }
-  - { id: other, mapping: 409 }
+  - { id: 401, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "电影 Movie" }
+  - { id: 402, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series(电视剧)" }
+  - { id: 403, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Shows(综艺)" }
+  - { id: 404, cate_level1: Documentary, cate_level2: TV/Documentary, cate_level2_desc: "Documentaries(纪录片)" }
+  - { id: 405, cate_level1: Anime, cate_level2: TV/Anime, cate_level2_desc: "Animations(动画片)" }
+  - { id: 406, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "Music Videos(MV)" }
+  - { id: 408, cate_level1: Music, cate_level2: Audio, cate_level2_desc: "HQ Audio(音乐)" }
+  - { id: 500, cate_level1: Music, cate_level2: Audio, cate_level2_desc: "Music(无损)" }
+  - { id: 409, cate_level1: Other, cate_level2: Other, cate_level2_desc: "Video Portray(写真视频)" }
 userinfo:
   path: https://lemonhd.org/rules.php
   item:
@@ -79,6 +72,13 @@ userinfo:
 search:
   paths:
     - path: torrents.php
+      categories: [ "!", 406, 408, 500 ]
+      method: get
+    - path: torrents_music.php
+      categories: [ 408, 500 ]
+      method: get
+    - path: torrents_mv.php
+      categories: [ 406 ]
       method: get
   query:
     $raw: "{% for c in query.cates %}cat_{{c}}=1&{% endfor %}"
