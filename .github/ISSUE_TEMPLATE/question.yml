@@ -23,3 +23,9 @@ body:
     validations:
       required: true
     id: scope
+   - type: textarea
+    id: logs
+    attributes:
+      label: 发生问题时系统日志
+      description: 问题出现时，程序运行日志请复制到这里。
+      render: shell
