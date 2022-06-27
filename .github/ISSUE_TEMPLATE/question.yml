@@ -23,7 +23,7 @@ body:
     validations:
       required: true
     id: scope
-   - type: textarea
+  - type: textarea
     id: logs
     attributes:
       label: 发生问题时系统日志
