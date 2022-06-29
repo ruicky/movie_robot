@@ -12,7 +12,7 @@ category_mappings:
   - { id: "电影720p", cate_level1: Movie,cate_level2: "电影720p", cate_level2_desc: "电影720p" }
   - { id: "电影1080i/p", cate_level1: Movie,cate_level2: "电影1080i/p", cate_level2_desc: "电影1080i/p" }
   - { id: "BluRay原盘", cate_level1: Movie,cate_level2: "BluRay原盘", cate_level2_desc: "BluRay原盘" }
-  - { id: "影视2160p", cate_level1: Movie,cate_level2: "影视2160p", cate_level2_desc: "影视2160p" }
+  - { id: "影视2160p", cate_level1: "*",cate_level2: "影视2160p", cate_level2_desc: "影视2160p" }
   - { id: "UHD原盘", cate_level1: Movie,cate_level2: "UHD原盘", cate_level2_desc: "UHD原盘" }
   - { id: "纪录片720p", cate_level1: Documentary,cate_level2: "纪录片720p", cate_level2_desc: "纪录片720p" }
   - { id: "纪录片1080i/p", cate_level1: Documentary,cate_level2: "纪录片1080i/p", cate_level2_desc: "纪录片1080i/p" }
@@ -112,8 +112,12 @@ torrents:
       filters:
         - name: re_search
           args: [ '\d+', 0 ]
-    description:
+    description_free_forever:
+      selector: div.name_left > a > b > font > span
+    description_normal:
       selector: div.name_left > a > b > span
+    description:
+      text: "{% if fields['description_free_forever'] %}{{ fields['description_free_forever'] }}{% else %}{{ fields['description_normal'] }}{% endif %}"
     title:
       selector: div.name_left > a > b
       remove: span
