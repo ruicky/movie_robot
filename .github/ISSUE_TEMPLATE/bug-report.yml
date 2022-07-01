@@ -1,0 +1,46 @@
+name: 缺陷反馈
+description: 反馈一个我遇到的程序使用问题
+title: "[缺陷]: "
+labels: ["缺陷"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        问题反馈需要在清晰描述自己问题的同时，给出你认为可能与问题有关的信息线索来帮助你解决问题。只提问题，不给出线索，是无法分析定位原因的。
+  - type: input
+    id: version
+    attributes:
+      label: 当前程序版本
+      description: 遇到问题时程序所在的版本号
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: 问题描述
+      description: 你遇到了什么问题，请清晰描述。
+      placeholder: "问题描述"
+    validations:
+      required: true
+  - type: textarea
+    id: step
+    attributes:
+      label: 重现步骤
+      description: 通过什么样的操作方式，可以发生这个问题，相同操作步骤你是否还会遇到问题？
+      placeholder: "1. 把冰箱门打开，我看到冰箱里没什么食物（拍照）空间还很足。2. 把大象装进去（我没切碎准备直接塞进去）。大象太大，装不进去了"
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: 发生问题时系统日志
+      description: 问题出现时，程序运行日志请复制到这里。
+      render: shell
+  - type: textarea
+    id: otherinfo
+    attributes:
+      label: 其他信息
+      description: 如果你还能找到其他信息可以帮助问题排查，请尽可能多补充。
+      placeholder: "媒体服务/下载器/tmdb访问状态等截图"
+    validations:
+      required: false

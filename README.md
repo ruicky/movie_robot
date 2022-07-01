@@ -63,6 +63,4 @@ https://github.com/pofey/movie-robot-frontend
 
 # 赞赏一下
 <img src="https://yee-1254270141.cos.ap-beijing.myqcloud.com/movie_robot/alipay.jpg" width="325" height="485" alt="赞赏码" style="float: left;"/>
-
-# 作者微信
-微信号：yipengfei329
+显示不全点开看。[点击查看支付宝付款码](https://yee-1254270141.cos.ap-beijing.myqcloud.com/movie_robot/alipay.jpg)
