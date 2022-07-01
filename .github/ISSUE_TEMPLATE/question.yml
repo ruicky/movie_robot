@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        提问之前，可以先去WIKI（https://yee329.notion.site/Movie-Robot-Wiki-9abef8c648c840fca47a0bf308957f85）里找找答案，如果没有，再来提问
+        提问之前，可以先去[WIKI](https://yee329.notion.site/Movie-Robot-Wiki-9abef8c648c840fca47a0bf308957f85)里找找答案，如果没有，再来提问
   - type: input
     id: version
     attributes:
