@@ -1,0 +1,48 @@
+name: 优化建议
+description: 提出更好的改进优化
+title: "[优化]: "
+labels: ["优化"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        优化建议可以让程序变得更好，也可以把作者累死。提建议也需要有系统性思考，而不完全是天马行空。
+  - type: textarea
+    id: now
+    attributes:
+      label: 当前现状
+      description: 你期望改进的功能，现在是什么样的，清晰表达可以帮助别人判断你对程序的理解，从而更好的思考解决方法。
+      placeholder: "描述当前功能概况（如有）"
+    validations:
+      required: false
+  - type: textarea
+    id: suggest
+    attributes:
+      label: 你的建议
+      description: 你期望产品应有的样子。
+      placeholder: "描述你期望达成的目的/逻辑/交互体验，可以配图，也可以配上同类产品功能描述。"
+    validations:
+      required: true
+  - type: dropdown
+    id: priority
+    attributes:
+      label: 优先级
+      description: 这个改进对你来说有多重要，你有多么渴望它快点上线。
+      options:
+        - 非常高
+        - 一般
+        - 不着急
+    validations:
+      required: true
+  - type: dropdown
+    id: scope
+    attributes:
+      label: 受众范围
+      description: 你认为这个改进受欢迎程度如何，是否有其他用户可能与你一样需要。
+      options:
+        - 很多人需要
+        - 一般
+        - 比较小众
+        - 不确定
+    validations:
+      required: true
