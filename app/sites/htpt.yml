@@ -1,6 +1,6 @@
-id: HDTime
-name: 高清时间
-domain: https://hdtime.org/
+id: htpt
+name: 海棠
+domain: https://www.htpt.cc/
 encoding: UTF-8
 
 login:
@@ -8,39 +8,35 @@ login:
     selector: a[href="logout.php"]
 
 category_mappings:
-  - { id: 401, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies/电影" }
-  - { id: 424, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies/Blu-Ray原盘" }
-  - { id: 402, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/剧集" }
-  - { id: 403, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Shows/综艺" }
-  - { id: 405, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "Animations/动漫" }
-  - { id: 414, cate_level1: Other, cate_level2: PC/Software, cate_level2_desc: "Software/软件" }
-  - { id: 407, cate_level1: TV, cate_level2: TV/Sport, cate_level2_desc: "Sports/体育" }
-  - { id: 404, cate_level1: Documentary, cate_level2: TV/Documentary, cate_level2_desc: "Documentaries/纪录片" }
-  - { id: 406, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "MusicVideo/MV" }
-  - { id: 408, cate_level1: Music, cate_level2: Audio,cate_level2_ desc: "Music/音乐" }
-  - { id: 410, cate_level1: Other, cate_level2: PC/Game, cate_level2_desc: "Game/游戏" }
-  - { id: 411, cate_level1: Other, cate_level2: PC/Doc, cate_level2_desc: "Doc/文档" }
-  - { id: 409, cate_level1: Other, cate_level2: Other, cate_level2_desc: "Misc/其他" }
+  - { id: 1, cate_level1: Movie, cate_level2: Other, cate_level2_desc: "相声" }
+  - { id: 4091, cate_level1: Movie, cate_level2: Other, cate_level2_desc: "评书" }
+  - { id: 4097, cate_level1: Movie, cate_level2: Other, cate_level2_desc: "戏曲" }
+  - { id: 4098, cate_level1: Movie, cate_level2: Other, cate_level2_desc: "鼓/琴" }
+  - { id: 4099, cate_level1: Movie, cate_level2: Other, cate_level2_desc: "小曲" }
+  - { id: 4101, cate_level1: Movie, cate_level2: Other, cate_level2_desc: "小品" }
+  - { id: 4104, cate_level1: Movie, cate_level2: Other, cate_level2_desc: "二人转" }
+  - { id: 4105, cate_level1: Movie, cate_level2: Other, cate_level2_desc: "小剧种" }
+  - { id: 4103, cate_level1: Movie, cate_level2: Other, cate_level2_desc: "广播剧" }
 
 userinfo:
-  path: https://hdtime.org/index.php
+  path: https://www.htpt.cc/index.php
   item:
     selector: table[id="info_block"]
   fields:
     uid:
       default_value: 0
-      selector: a[href^="https://hdtime.org/userdetails.php?id="]
+      selector: a[href^="userdetails.php?id="]
       attribute: href
       filters:
         - name: re_search
           args: [ '\d+', 0 ]
     user_group:
       default_value: ''
-      selector: a[href^="https://hdtime.org/userdetails.php?id="]
+      selector: a[href^="userdetails.php?id="]
       attribute: class
     username:
       default_value: '未知用户名'
-      selector: a[href^="https://hdtime.org/userdetails.php?id="]
+      selector: a[href^="userdetails.php?id="]
     share_ratio:
       default_value: ''
       selector: font[class="color_ratio"]
@@ -77,7 +73,9 @@ userinfo:
 search:
   paths:
     - path: torrents.php
-      method: get
+      categories: [ "!", 4103 ]
+    - path: live.php
+      categories: [ 4103 ]
   query:
     $raw: "{% for c in query.cates %}cat{{c}}=1&{% endfor %}"
     search: "{% if query.imdb_id %}{{query.imdb_id}}{%else%}{{query.keyword}}{% endif %}"

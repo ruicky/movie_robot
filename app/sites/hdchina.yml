@@ -114,6 +114,7 @@ search:
     sort: "{{ query.sort }}"
     type: "{{ query.type }}"
     page: "{{ query.page }}"
+  pre_handler: hdchina_freesession_check_handler
   result_filter: hdchina_free_ajax_filter
 
 

@@ -10,6 +10,7 @@ login:
 category_mappings:
   - { id: 401, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies/电影" }
   - { id: 404, cate_level1: Documentary, cate_level2: TV/Documentary, cate_level2_desc: "Documentaries/纪录片" }
+  - { id: 410, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/港台剧" }
   - { id: 406, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "MusicVideo/音乐MV" }
 
 userinfo:
@@ -19,18 +20,18 @@ userinfo:
   fields:
     uid:
       default_value: 0
-      selector: a[href^="userdetails.php?id="]
+      selector: a[href^="https://gainbound.net/userdetails.php?id="]
       attribute: href
       filters:
         - name: re_search
           args: [ '\d+', 0 ]
     user_group:
       default_value: ''
-      selector: a[href^="userdetails.php?id="]
+      selector: a[href^="https://gainbound.net/userdetails.php?id="]
       attribute: class
     username:
       default_value: '未知用户名'
-      selector: a[href^="userdetails.php?id="]
+      selector: a[href^="https://gainbound.net/userdetails.php?id="]
     share_ratio:
       default_value: ''
       selector: font[class="color_ratio"]
