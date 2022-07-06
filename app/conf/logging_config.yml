@@ -1,0 +1,27 @@
+version: 1
+root:
+  level: INFO
+  handlers: [ file,console ]
+loggers:
+  apscheduler:
+    level: ERROR
+    handlers: [ file,console ]
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: INFO
+    formatter: console_formatters
+  file:
+    class: logging.handlers.TimedRotatingFileHandler
+    formatter: file_formatters
+    filename: ${workdir}/logs/robot.log
+    level: DEBUG
+    when: 'midnight'
+    interval: 1
+formatters:
+  console_formatters:
+    format: '%(asctime)s - %(threadName)s - %(levelname)s: %(message)s'
+    datefmt: '%Y/%m/%d %H:%M:%S'
+  file_formatters:
+    format: '%(asctime)s - %(threadName)s - %(levelname)s: %(message)s'
+    datefmt: ' %Y/%m/%d %H:%M:%S'

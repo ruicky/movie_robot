@@ -1,0 +1,97 @@
+{
+  "rule_name": "compact",
+  "desc": "全压缩格式资源优先",
+  "weights": {
+    "name_score": 0.3,
+    "type_score": 0.4,
+    "size_score": 0,
+    "upload_score": 0.15,
+    "download_score": 0.15,
+    "subtitle_score": 0.00,
+    "free_score": 0
+  },
+  "subtitle_keywords": [
+    "中字",
+    "中文",
+    "简繁",
+    "双语",
+    "中英",
+    "简+繁",
+    "国英"
+  ],
+  "name_keywords": [],
+  "type_patterns": [
+    {
+      "pattern": "(2160[pP]|4[kK]).*REMUX",
+      "score": 0
+    },
+    {
+      "pattern": "REMUX.*(2160[pP]|4[kK])",
+      "score": 0
+    },
+    {
+      "pattern": "(2[kK]|1080[pPiI]|1440[pPiI]).*REMUX",
+      "score": 5
+    },
+    {
+      "pattern": "REMUX.*(2[kK]|1080[pPiI]|1440[pPiI])",
+      "score": 5
+    },
+    {
+      "pattern": "(2160[pP]|4[kK]).*[hHxX]\\.?265",
+      "score": 60
+    },
+    {
+      "pattern": "[hHxX]\\.?265.*(2160[pP]|4[kK])",
+      "score": 60
+    },
+    {
+      "pattern": "(2160[pP]|4[kK]).*[hHxX]\\.?264",
+      "score": 40
+    },
+    {
+      "pattern": "[hHxX]\\.?264.*(2160[pP]|4[kK])",
+      "score": 40
+    },
+    {
+      "pattern": "(2[kK]|1080[pPiI]|1440[pPiI]).*[hHxX]\\.?264",
+      "score": 80
+    },
+    {
+      "pattern": "[hHxX]\\.?264.*(2[kK]|1080[pPiI]|1440[pPiI])",
+      "score": 80
+    },
+    {
+      "pattern": "(2[kK]|1080[pPiI]|1440[pPiI]).*[hHxX]\\.?265",
+      "score": 100
+    },
+    {
+      "pattern": "[hHxX]\\.?265.*(2[kK]|1080[pPiI]|1440[pPiI])",
+      "score": 100
+    },
+    {
+      "pattern": "WEB-?DL.*(4[kK]|2160[pP])",
+      "score": 10
+    },
+    {
+      "pattern": "(4[kK]|2160[pP]).*WEB-?DL",
+      "score": 10
+    },
+    {
+      "pattern": "WEB-?DL.*(2[kK]|1080[pPiI]|1440[pPiI])",
+      "score": 20
+    },
+    {
+      "pattern": "(2[kK]|1080[pPiI]|1440[pPiI]).*WEB-?DL",
+      "score": 20
+    },
+    {
+      "pattern": "Blu-?ray.*(HEVC|AVC)",
+      "score": -100
+    },
+    {
+      "pattern": "MiniBD",
+      "score": -100
+    }
+  ]
+}
